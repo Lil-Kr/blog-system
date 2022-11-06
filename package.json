@@ -3,9 +3,19 @@
 	"private": true,
 	"version": "0.0.0",
 	"scripts": {
-		"dev": "vite",
-		"build": "tsc && vite build",
-		"preview": "vite preview"
+    "dev": "vite --mode development",
+    "build": "tsc && vite build",
+    "build:beta": "vite build --mode beta",
+    "build:release": "vite build --mode release",
+    "build:legacy": "vite build --mode legacy ",
+    "build:deploy": "vite build --base=/vite-react-ts/",
+    "lint:fix": "eslint --cache --ext .js,.jsx,.ts,.tsx --no-error-on-unmatched-pattern --quiet --fix ./src",
+    "lint:style": "stylelint --fix \"src/**/*.less\" --syntax less",
+    "clean:cache": "rimraf node_modules/.cache/ && rimraf node_modules/.vite",
+    "stylelint-check": "stylelint-config-prettier-check",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "prebuild": "rimraf dist",
+    "preview": "vite preview"
 	},
 	"dependencies": {
     "@ant-design/icons": "^4.7.0",
