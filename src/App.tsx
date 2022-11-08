@@ -1,44 +1,31 @@
 import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { Button } from 'antd'
+import { routers } from '@/routers'
+import { useRoutes, NavLink, Outlet } from 'react-router-dom'
 
 function App() {
   const [count, setCount] = useState(0)
 
+  const outlet = useRoutes(routers)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
+    <>
+      {/* <div className="App">顶层组件</div>
+      <Button type="primary">Button</Button> */}
+      <ul>
+        <li>
+          <NavLink to="/home">home信息</NavLink>
+        </li>
+        <li>
+          <NavLink to="/band">乐队信息</NavLink>
+        </li>
+        <li>
+          <NavLink to="/user">用户信息</NavLink>
+        </li>
+      </ul>
+      {outlet}
+      <Outlet />
+    </>
   )
 }
 
