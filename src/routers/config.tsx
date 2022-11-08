@@ -10,6 +10,8 @@ const config = () => {
 const Home = lazy(() => import('@/pages/home'))
 const Band = lazy(() => import('@/pages/band'))
 const User = lazy(() => import('@/pages/user'))
+const Login = lazy(() => import('@/pages/login'))
+const MainLayout = lazy(() => import('@/layout'))
 
 const withLoadingComponent = (comp: JSX.Element) => (
   <React.Suspense fallback={<div>loading...</div>}>{comp}</React.Suspense>
@@ -18,7 +20,15 @@ const withLoadingComponent = (comp: JSX.Element) => (
 const routers = [
   {
     path: '/',
-    redirect: '/home'
+    element: <Navigate to="/login" replace={true} />
+  },
+  {
+    path: '/login',
+    element: withLoadingComponent(<Login />)
+  },
+  {
+    path: '/system',
+    element: withLoadingComponent(<MainLayout />)
   },
   {
     path: '/home',

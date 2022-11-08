@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Button } from 'antd'
 import { routers } from '@/routers'
 import { useRoutes, NavLink, Outlet } from 'react-router-dom'
+import MainLayout from '@/layout'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,7 +13,7 @@ function App() {
     <>
       {/* <div className="App">顶层组件</div>
       <Button type="primary">Button</Button> */}
-      <ul>
+      {/* <ul>
         <li>
           <NavLink to="/home">home信息</NavLink>
         </li>
@@ -24,7 +25,9 @@ function App() {
         </li>
       </ul>
       {outlet}
-      <Outlet />
+      <Outlet /> */}
+      {/* <MainLayout /> */}
+      {outlet}
     </>
   )
 }
