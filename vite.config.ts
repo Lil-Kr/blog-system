@@ -16,8 +16,9 @@ export default defineConfig({
         AntdResolve()
       ]
     }),
+    // config mock
     viteMockServe({
-      mockPath: 'mock',
+      mockPath: './public/modules/',
       localEnabled: isDev,
       prodEnabled: !isDev,
       supportTs: true,
@@ -44,14 +45,14 @@ export default defineConfig({
       less: {
         charset: false,
         javascriptEnabled: true,
-        modifyVars: {
-          '@primary-color': '#4377FE',//设置antd主题色
-        },
-      },
+        // modifyVars: {
+        //   '@primary-color': '#4377FE',//设置antd主题色
+        // },
+      }
       // scss: {
-      //   charset: false,
-      //   // 此处修改为要被预处理的scss文件地址
-      //   additionalData: `@import "@/src/assets/global.scss"`
+        // charset: false,
+        // 此处修改为要被预处理的scss文件地址
+        // additionalData: `@import "@/src/assets/styles/global.scss"`
       // }
     }
   },

@@ -1,2 +1,2 @@
-import MenuLayout from './MenuLayout'
+import MenuLayout from './components/MenuLayout'
 export default MenuLayout

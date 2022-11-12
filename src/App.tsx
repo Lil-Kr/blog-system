@@ -1,12 +1,10 @@
 import { useState } from 'react'
-import { Button } from 'antd'
+import { Button, Spin } from 'antd'
 import { routers } from '@/routers'
 import { useRoutes, NavLink, Outlet } from 'react-router-dom'
-import MainLayout from '@/layout'
+import MainLayout from './layout'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   const outlet = useRoutes(routers)
 
   return (
@@ -27,6 +25,7 @@ function App() {
       {outlet}
       <Outlet /> */}
       {/* <MainLayout /> */}
+      {/* <Spin className="spin-large-style" /> */}
       {outlet}
     </>
   )
