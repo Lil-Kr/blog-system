@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# Build and Release Folders
+bin-debug/
+bin-release/
+[Oo]bj/
+[Bb]in/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -22,3 +28,12 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Other files and folders
+.settings/
+
+# Executables
+*.swf
+*.air
+*.ipa
+*.apk
