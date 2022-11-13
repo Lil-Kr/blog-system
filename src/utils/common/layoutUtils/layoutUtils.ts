@@ -23,7 +23,6 @@ function getMenuOpenKeysUtil(items: MenuItemType[], pathname: string) {
     // handle children
     findChildrenItem(children, key, pathname)
   }
-  console.log('--> keyStr:', keyStr)
   let keys: string[] = keyStr.split('.')
   // 保留所有父节点
   if (keys && keys.length >= 2) {
