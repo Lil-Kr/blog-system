@@ -1,3 +1,3 @@
-import config, { routers } from './config'
+import config, { routersConfig, routers, menuItems, breadcrumbMap } from './config'
 export default config
-export { routers }
+export { routersConfig, routers, menuItems, breadcrumbMap }

@@ -1,5 +1,5 @@
 {
-  "useTabs": false,
+  "useTabs": true,
   "eslintIntegration": true,
   "stylelintIntegration": true,
   "tabWidth": 2,

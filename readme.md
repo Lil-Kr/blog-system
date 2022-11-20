@@ -16,7 +16,10 @@ master -> react18-ts-redux-vite2-antd-main -> react18-ts-redux-vite2-antd-main-f
 
 ## 项目进度
 
+* 项目初始化
+* 配置项目 -> 包括编码规范
+* 配置vite.config.ts
+* 配置
 
 
-
-## 备注
+## 

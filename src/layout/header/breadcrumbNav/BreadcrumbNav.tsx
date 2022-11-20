@@ -1,18 +1,22 @@
-import { Breadcrumb } from 'antd'
 import React from 'react'
+import { useLocation } from 'react-router-dom'
+import { breadcrumbMap } from '@/routers'
+
+import { Breadcrumb } from 'antd'
 
 const BreadcrumbNav = () => {
-  return (
-    <>
-      <Breadcrumb>
-        <Breadcrumb.Item>首页</Breadcrumb.Item>
-        <Breadcrumb.Item>User</Breadcrumb.Item>
-        <Breadcrumb.Item>Bill</Breadcrumb.Item>
-        <Breadcrumb.Item>Bill</Breadcrumb.Item>
-        <Breadcrumb.Item>Bill</Breadcrumb.Item>
-      </Breadcrumb>
-    </>
-  )
+	const { pathname } = useLocation()
+	const breadcrumbs: string[] = breadcrumbMap.get(pathname) || []
+	console.log('--> breadcrumbs info:', breadcrumbs)
+	return (
+		<>
+			<Breadcrumb>
+				{breadcrumbs.map((item: string, index: number) => {
+					return <Breadcrumb.Item key={index}>{item}</Breadcrumb.Item>
+				})}
+			</Breadcrumb>
+		</>
+	)
 }
 
 export default BreadcrumbNav

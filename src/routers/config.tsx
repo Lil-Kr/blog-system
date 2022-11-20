@@ -1,81 +1,58 @@
-import React, { lazy } from 'react'
-import { MenuProps, Spin } from 'antd'
-// 重定向组件
-import { Navigate, RouteObject } from 'react-router-dom'
-
-// css
-import styles from './spin.module.scss'
+import React, { Suspense, lazy } from 'react'
+import { RouteItemType } from '@/types/router/routeType'
+import { lazyLoadUtil } from '@/utils/router'
+import busConfig, { testConfig, homeConfig } from './modules'
+import { handleRouterItems } from '@/utils/router/routerCommonUtil'
+import { UserOutlined } from '@ant-design/icons'
+import { getBreadCrumbItems, getMenuItems } from '@/utils/common'
 
 const config = () => {
-  return <></>
+	return <></>
 }
 
-// lazy loading
-const MainLayout = lazy(() => import('@/layout'))
-const Home = lazy(() => import('@/pages/home'))
-const Band = lazy(() => import('@/pages/band'))
-const User = lazy(() => import('@/pages/user/User'))
-const Touristische = lazy(() => import('@/pages/user/Touristische'))
-const Login = lazy(() => import('@/pages/login'))
-const Blog = lazy(() => import('@/pages/blog'))
-const System = lazy(() => import('@/pages/system'))
-
-const withLoadingComponent = (comp: JSX.Element) => (
-  <React.Suspense
-    fallback={
-      <div>
-        <Spin size="large" className={styles.spinLargeStyle} />
-      </div>
-    }
-  >
-    {comp}
-  </React.Suspense>
-)
-
-const routers = [
-  {
-    path: '/',
-    element: <Navigate to="/login" replace={true} />
-  },
-  {
-    path: '/login',
-    element: withLoadingComponent(<Login />)
-  },
-  {
-    path: '/',
-    element: withLoadingComponent(<MainLayout />),
-    children: [
-      {
-        path: '/home',
-        element: withLoadingComponent(<Home />)
-      },
-      {
-        path: '/blog',
-        element: withLoadingComponent(<Blog />)
-      },
-      {
-        path: '/blogType',
-        element: withLoadingComponent(<Blog />)
-      },
-      {
-        path: '/band',
-        element: withLoadingComponent(<Band />)
-      },
-      {
-        path: '/user',
-        element: withLoadingComponent(<User />)
-      },
-      {
-        path: '/touristische',
-        element: withLoadingComponent(<Touristische />)
-      },
-      {
-        path: '/system',
-        element: withLoadingComponent(<System />)
-      }
-    ]
-  }
+const routersConfig: RouteItemType[] = [
+	{
+		meta: {
+			key: '/',
+			title: '重定向到登录page',
+			icon: <UserOutlined />
+		},
+		path: '/',
+		// redirect: <Navigate to="/login" replace={true} />
+		redirect: '/login'
+	},
+	{
+		meta: {
+			key: '/login',
+			title: '登录',
+			icon: <UserOutlined />
+		},
+		path: '/login',
+		element: lazyLoadUtil(lazy(() => import('@/pages/login')))
+	},
+	{
+		meta: {
+			key: '/loginOut',
+			title: '退出登录',
+			icon: <UserOutlined />
+		},
+		path: '/loginOut',
+		element: lazyLoadUtil(lazy(() => import('@/pages/login')))
+	},
+	...busConfig
 ]
+// handle router structure
+const routers = handleRouterItems(routersConfig)
+console.log('--> 处理后的路由表:', routers)
+
+// generate menu structure
+const menuItems = getMenuItems(routersConfig)
+// console.log('--> 处理后的菜单结构:', JSON.stringify(menuItems))
+console.log('--> 处理后的菜单结构:', menuItems)
+
+// generate breadcrumb nav
+const breadcrumbMap = getBreadCrumbItems(routersConfig)
+console.log('--> 处理后的面包屑结构:', breadcrumbMap)
 
 export default config
-export { routers }
+export { routersConfig, routers, menuItems, breadcrumbMap }
