@@ -1,5 +1,6 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
+// import ReactDOM from 'react-dom/client'
+import ReactDOM from 'react-dom'
 
 import App from './App'
 import { HashRouter } from 'react-router-dom'
@@ -14,12 +15,25 @@ import 'reset-css'
 // 引入全局样式
 import '@/assets/styles/global.scss'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-	// <React.StrictMode>
-	// </React.StrictMode>
+/**
+ * 使用 ReactDOM.render 渲染, 解决 react18(ReactDOM.createRoot) 并发
+ * https://github.com/react-component/menu/pull/551
+ * https://github.com/ant-design/ant-design/issues/38534
+ */
+ReactDOM.render(
 	<Provider store={store}>
 		<HashRouter>
 			<App />
 		</HashRouter>
-	</Provider>
+	</Provider>,
+	document.getElementById('root')
 )
+
+// react 18 使用 ReactDOM.createRoot 渲染, antd Menu 菜单(子菜单组件) 在收缩展开时会闪烁, 先使用ReactDOM.render渲染组件, 等待官方修复
+// ReactDOM.createRoot(document.getElementById('root')).render(
+// 	// <React.StrictMode>
+// 	// </React.StrictMode>
+// 	<HashRouter>
+// 		<App />
+// 	</HashRouter>
+// )
