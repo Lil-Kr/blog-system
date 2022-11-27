@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 
 import MenuLayout from './menu'
 import HeaderLayout from './header'
 import ContentLayout from './content'
 import FooterLayout from './footer/FooterLayout'
+import TabsLayout from './tabs'
 import { Layout } from 'antd'
 
 // css
@@ -22,8 +23,17 @@ const MainLayout = () => {
 			</Sider>
 			<Layout className="site-layout">
 				<HeaderLayout collapsed={collapsed} setCollapsed={setCollapsed} />
-				{/* <LayoutTabs></LayoutTabs> */}
+				<TabsLayout></TabsLayout>
 				<ContentLayout />
+				{/* <Content
+					className="site-layout-background content-layout"
+					style={{
+						margin: '15px 15px 0',
+						minHeight: '280'
+					}}
+				>
+					<Outlet />
+				</Content> */}
 				<FooterLayout />
 			</Layout>
 		</div>

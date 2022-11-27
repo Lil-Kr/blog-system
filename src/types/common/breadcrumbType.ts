@@ -1,9 +1,9 @@
 /**
  * definition breadcrumb type
  */
-interface BreadcrumbStateType {
+interface BreadcrumbState {
   breadcrumbMap?: Map<String, any>
-  breadcrumb?: any
+  breadcrumbList?: any[]
 }
 
-export type { BreadcrumbStateType }
+export type { BreadcrumbState }

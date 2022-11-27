@@ -1,12 +1,12 @@
 import React from 'react'
 // import ReactDOM from 'react-dom/client'
 import ReactDOM from 'react-dom'
-
 import App from './App'
 import { HashRouter } from 'react-router-dom'
+import { PersistGate } from 'redux-persist/integration/react'
 
 // stroe
-import store from '@/redux'
+import store, { persistor } from '@/redux'
 import { Provider } from 'react-redux'
 
 // 自动去除默认样式, 初始化样式, 接下来才是引入自己的样式
@@ -14,17 +14,20 @@ import 'reset-css'
 
 // 引入全局样式
 import '@/assets/styles/global.scss'
+import { Spin } from 'antd'
 
 /**
- * 使用 ReactDOM.render 渲染, 解决 react18(ReactDOM.createRoot) 并发
+ * 使用 ReactDOM.render 渲染, 解决 react18(ReactDOM.createRoot) 并发模式下带来的问题
  * https://github.com/react-component/menu/pull/551
  * https://github.com/ant-design/ant-design/issues/38534
  */
 ReactDOM.render(
 	<Provider store={store}>
-		<HashRouter>
-			<App />
-		</HashRouter>
+		<PersistGate loading={<Spin />} persistor={persistor}>
+			<HashRouter>
+				<App />
+			</HashRouter>
+		</PersistGate>
 	</Provider>,
 	document.getElementById('root')
 )

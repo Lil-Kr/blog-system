@@ -1,22 +1,34 @@
 /**
  * createSlice: create reducer`s slice
  */
-import { configureStore } from "@reduxjs/toolkit"
+import { configureStore } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
-import { setupListeners } from "@reduxjs/toolkit/dist/query"
-import { breadcrumbReducer } from "./modules/system/breadcrumb"
+import { setupListeners } from '@reduxjs/toolkit/dist/query'
+import { persistStore } from 'redux-persist'
+import rootPersistReducer from '@/redux/modules/persist'
 
 const store: any = configureStore({
-  reducer: {
-    breadcrumb: breadcrumbReducer
-  },
-  // 让缓存生效
-  // middleware: curryGetDefaultMiddleware => curryGetDefaultMiddleware().concat(bandApi.middleware, authApi.middleware)
-  // devTools: process.env.NODE_ENV !== 'production'
+  reducer: rootPersistReducer,
+  /**
+   * 让缓存生效
+   * middleware: curryGetDefaultMiddleware => curryGetDefaultMiddleware().concat(bandApi.middleware, authApi.middleware)
+   * @param curryGetDefaultMiddleware 
+   * @returns 
+   */
+  middleware: curryGetDefaultMiddleware => curryGetDefaultMiddleware({ serializableCheck: false }),
+  devTools: process.env.NODE_ENV !== 'production'
+  // devTools: true
 })
 
 setupListeners(store.dispatch)
+
 export default store
+
+/**
+ * create persist store
+ */
+export const persistor = persistStore(store)
+
 export const state = store.getState()
 
 // 利用 typeof 推断出 dispatch 的类型
@@ -27,5 +39,4 @@ export type RootState = ReturnType<typeof store.getState>
 
 // 以下两行，都是为了让 TypeScript 能够推断出状态的类型; 往后, 我们会在整个应用中重复使用这两个成员
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
-
 export const useAppDispatch = () => useDispatch<AppDispatch>()
