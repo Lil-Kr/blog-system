@@ -36,9 +36,9 @@
     "react-router-waiter": "^1.1.5",
     "react-scripts": "4.0.0",
     "redux": "^4.1.2",
-		"redux-persist": "^6.0.0",
-		"redux-promise": "^0.6.0",
-		"redux-thunk": "^2.4.1",
+    "redux-persist": "^6.0.0",
+    "redux-promise": "^0.6.0",
+    "redux-thunk": "^2.4.1",
     "reset-css": "^5.0.1",
     "vite-plugin-imp": "^2.2.0"
   },
@@ -66,6 +66,6 @@
     "vite": "^2.9.9",
     "vite-plugin-mock": "^2.9.6",
     "vite-plugin-style-import": "1.4.1",
-    "vite-plugin-svg-icons": "^2.0.1"
+    "vite-plugin-svgr": "^2.2.2"
   }
 }

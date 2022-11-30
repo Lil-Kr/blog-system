@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react'
 import { viteMockServe } from 'vite-plugin-mock'
 import styleImport, { AntdResolve } from 'vite-plugin-style-import'
 import path from 'path'
+import svgr from 'vite-plugin-svgr'
 
 const isDev = process.env.NODE_ENV === 'development'
 // https://vitejs.dev/config/
@@ -39,6 +40,10 @@ export default defineConfig({
         },
       ],
     }),
+    svgr({
+      exportAsDefault: true,
+      include: 'src/assets/images/svg/*.svg'
+    })
   ],
   css: {
     preprocessorOptions: {
@@ -50,9 +55,9 @@ export default defineConfig({
         // },
       }
       // scss: {
-        // charset: false,
-        // 此处修改为要被预处理的scss文件地址
-        // additionalData: `@import "@/src/assets/styles/global.scss"`
+      // charset: false,
+      // 此处修改为要被预处理的scss文件地址
+      // additionalData: `@import "@/src/assets/styles/global.scss"`
       // }
     }
   },

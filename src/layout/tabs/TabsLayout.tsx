@@ -6,6 +6,7 @@ import { RootState, useAppSelector, useAppDispatch } from '@/redux'
 import { setTabs, removeTab, setTabActive } from '@/redux/modules/system/tabs'
 import { TabType } from '@/types/common/tabType'
 
+const { TabPane } = Tabs
 // css
 import './index.scss'
 
@@ -99,14 +100,17 @@ const TabsLayout = () => {
 		}
 	}
 	return (
-		<Tabs
-			hideAdd
-			type="editable-card"
-			onChange={onChange}
-			activeKey={activeKey}
-			onEdit={onEdit}
-			items={items}
-		/>
+		<div className="tabs">
+			<Tabs
+				hideAdd
+				type="editable-card"
+				onChange={onChange}
+				activeKey={activeKey}
+				onEdit={onEdit}
+				items={items}
+			></Tabs>
+			<TabPane>sssss</TabPane>
+		</div>
 	)
 }
 

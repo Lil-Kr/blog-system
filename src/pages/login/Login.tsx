@@ -1,9 +1,17 @@
-import React from 'react'
+import { SvgIcon } from '@/assets/images'
+import ArticleCreate from '@/assets/images/svg/article-create.svg'
 
 const Login = () => {
-  return (
-    <div>Login</div>
-  )
+	return (
+		<>
+			{/* <ArticleCreate /> */}
+			<SvgIcon />
+			<br />
+			<ArticleCreate />
+			<br />
+			Login
+		</>
+	)
 }
 
 export default Login

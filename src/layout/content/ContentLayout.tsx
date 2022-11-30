@@ -10,7 +10,7 @@ const ContentLayout = () => {
 			<Content
 				className="site-layout-background content-layout"
 				style={{
-					margin: '0 15px 0',
+					margin: '10px 15px 10px',
 					minHeight: '280'
 				}}
 			>

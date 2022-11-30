@@ -24,9 +24,9 @@ master -> react18-ts-redux-vite2-antd-main -> react18-ts-redux-vite2-antd-main-f
 
 ## 待完成
 
-// todo: 更改 tab 样式: 参考: https://4x.ant.design/components/tabs-cn/#components-tabs-demo-custom-tab-bar-node
 // todo: 未完成登录页
 // todo: 未完成守卫路由
 // todo: 未完成 mock server
-// todo: 布局响应式
 // todo: 在vite中配置 dev test prod 等环境切换
+// todo: 布局响应式1
+// todo: 国际化

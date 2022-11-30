@@ -25,8 +25,7 @@ const routersConfig: RouteItemType[] = [
 	{
 		meta: {
 			key: '/login',
-			title: '登录',
-			icon: <UserOutlined />
+			title: '登录'
 		},
 		path: '/login',
 		element: lazyLoadUtil(lazy(() => import('@/pages/login')))
