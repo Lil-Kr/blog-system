@@ -34,4 +34,3 @@
 // todo: 未完成 mock server
 // todo: 在vite中配置 dev test prod 等环境切换
 // todo: 布局响应式1
-// todo: 国际化
