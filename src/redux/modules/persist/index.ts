@@ -1,12 +1,12 @@
 /**
  * 配置 persist
  */
-
 import { combineReducers } from "@reduxjs/toolkit"
 import { persistReducer } from "redux-persist"
 import storage from 'redux-persist/lib/storage'
 import { breadcrumbReducer } from "@/redux/modules/system/breadcrumb"
 import { tabReducer } from "@/redux/modules/system/tabs"
+import { globalReducer } from "../global"
 
 const rootPersistConfig = {
   /**
@@ -17,7 +17,7 @@ const rootPersistConfig = {
    * 储存方式
    */
   storage: storage,
-  whitelist:['breadcrumb','tab']
+  whitelist: ['breadcrumb', 'tab', 'global']
 }
 
 const breadcrumbPersistConfig = {
@@ -42,6 +42,7 @@ const tabPersistConfig = {
 const rootReducer = combineReducers({
   breadcrumb: breadcrumbReducer,
   tab: tabReducer,
+  global: globalReducer
 })
 
 

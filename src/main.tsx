@@ -9,6 +9,9 @@ import { PersistGate } from 'redux-persist/integration/react'
 import store, { persistor } from '@/redux'
 import { Provider } from 'react-redux'
 
+// 国际化
+import '@/locales'
+
 // 自动去除默认样式, 初始化样式, 接下来才是引入自己的样式
 import 'reset-css'
 
