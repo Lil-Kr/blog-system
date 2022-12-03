@@ -19,7 +19,7 @@ const systemConfig: RouteItemType[] = [
 					icon: <UserOutlined />
 				},
 				path: '/configuration',
-				element: lazyLoadUtil(lazy(() => import('@/pages/system')))
+				element: lazyLoadUtil(lazy(() => import('@/views/system')))
 			}
 		]
 	}

@@ -10,6 +10,13 @@ import i18n from 'i18next'
 import { setLanguage } from './redux/modules/global'
 import useTheme from './hooks/useTheme'
 
+// console.log('--> import.meta.env:', import.meta.env)
+// console.log('--> import.meta.env.MODE:', import.meta.env.MODE)
+// console.log('--> import.meta.env.VITE_APP_BASE_API:', import.meta.env.VITE_APP_BASE_API)
+// console.log('--> process.env.NODE_ENV:', process.env.NODE_ENV)
+
+// console.log('--> loadEnv:', loadEnv)
+
 const Router = () => {
 	const outlet = useRoutes(routers)
 	return outlet

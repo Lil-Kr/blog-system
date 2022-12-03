@@ -25,6 +25,7 @@
     "axios": "^0.27.2",
     "dayjs": "^1.10.6",
     "i18next": "^21.8.10",
+    "js-md5": "^0.7.3",
     "mockjs": "^1.1.0",
     "nanoid": "^4.0.0",
     "react": "^18.2.0",
@@ -42,6 +43,7 @@
     "redux-promise": "^0.6.0",
     "redux-thunk": "^2.4.1",
     "reset-css": "^5.0.1",
+    "screenfull": "^6.0.2",
     "vite-plugin-imp": "^2.2.0"
   },
   "devDependencies": {

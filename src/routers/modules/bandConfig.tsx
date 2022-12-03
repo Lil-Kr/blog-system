@@ -19,7 +19,7 @@ const bandConfig: RouteItemType[] = [
 					icon: <UserOutlined />
 				},
 				path: '/index',
-				element: lazyLoadUtil(lazy(() => import('@/pages/band')))
+				element: lazyLoadUtil(lazy(() => import('@/views/band')))
 			}
 		]
 	}

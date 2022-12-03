@@ -14,7 +14,7 @@ const homeConfig: RouteItemType[] = [
 			title: '首页'
 		},
 		path: '/home',
-		element: lazyLoadUtil(lazy(() => import('@/pages/home')))
+		element: lazyLoadUtil(lazy(() => import('@/views/home')))
 	}
 ]
 

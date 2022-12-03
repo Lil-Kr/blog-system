@@ -19,7 +19,7 @@ const permissionConfig: RouteItemType[] = [
 					icon: <VideoCameraOutlined />
 				},
 				path: '/menu',
-				element: lazyLoadUtil(lazy(() => import('@/pages/permission/Menu')))
+				element: lazyLoadUtil(lazy(() => import('@/views/permission/Menu')))
 			},
 			{
 				meta: {
@@ -28,7 +28,7 @@ const permissionConfig: RouteItemType[] = [
 					icon: <UserOutlined />
 				},
 				path: '/role',
-				element: lazyLoadUtil(lazy(() => import('@/pages/permission/Role')))
+				element: lazyLoadUtil(lazy(() => import('@/views/permission/Role')))
 			},
 			{
 				meta: {
@@ -44,7 +44,7 @@ const permissionConfig: RouteItemType[] = [
 							icon: <UserOutlined />
 						},
 						path: '/btn-1',
-						element: lazyLoadUtil(lazy(() => import('@/pages/permission/Button1')))
+						element: lazyLoadUtil(lazy(() => import('@/views/permission/Button1')))
 					},
 					{
 						meta: {
@@ -53,7 +53,7 @@ const permissionConfig: RouteItemType[] = [
 							icon: <UserOutlined />
 						},
 						path: '/btn-2',
-						element: lazyLoadUtil(lazy(() => import('@/pages/permission/Button2')))
+						element: lazyLoadUtil(lazy(() => import('@/views/permission/Button2')))
 					}
 				]
 			}

@@ -71,7 +71,7 @@ const MenuLayout = (props) => {
 	return (
 		<>
 			<Spin spinning={loading} tip="Loading...">
-				<Logo />
+				<Logo collapsed={collapsed} />
 				<Menu
 					theme="dark"
 					mode="inline"

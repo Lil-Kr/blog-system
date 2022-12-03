@@ -1,4 +1,4 @@
-import { defineConfig, UserConfigExport, ConfigEnv } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import vitePluginImp from 'vite-plugin-imp'
 import react from '@vitejs/plugin-react'
 import { viteMockServe } from 'vite-plugin-mock'
@@ -7,6 +7,7 @@ import path from 'path'
 import svgr from 'vite-plugin-svgr'
 
 const isDev = process.env.NODE_ENV === 'development'
+console.log('--> loadEnv:', loadEnv)
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -19,7 +20,7 @@ export default defineConfig({
     }),
     // config mock
     viteMockServe({
-      mockPath: './public/modules/',
+      mockPath: './public/mock/modules',
       localEnabled: isDev,
       prodEnabled: !isDev,
       supportTs: true,

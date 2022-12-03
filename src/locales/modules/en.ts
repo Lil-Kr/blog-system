@@ -2,9 +2,18 @@ export default {
 	test: {
 		btn: "click me"
 	},
+	logo: {
+		title: "system-manager"
+	},
 	login: {
+		title: "Login System",
 		confirm: "Login",
-		reset: "Reset"
+		reset: "Reset",
+		btn: "Login",
+		usernamePlaceholder: "username",
+		pwdPlaceholder: "password",
+		usernameMessage: "Please input your username!",
+		pwdMessage: "Please input your password!"
 	},
 	home: {
 		welcome: "Welcome"
