@@ -2,9 +2,18 @@ export default {
 	test: {
 		btn: "点我"
 	},
+	logo: {
+		title: "后台管理系统"
+	},
 	login: {
+		title: "后台系统登陆",
 		confirm: "登录",
-		reset: "重置"
+		reset: "重置",
+		btn: "登录",
+		username_placeholder: "用户名",
+		password_placeholder: "密码",
+		username_message: "用户名不能为空",
+		password_message: "密码不能为空"
 	},
 	home: {
 		welcome: "欢迎使用"

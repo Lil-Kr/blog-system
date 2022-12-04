@@ -4,9 +4,12 @@
 import { combineReducers } from "@reduxjs/toolkit"
 import { persistReducer } from "redux-persist"
 import storage from 'redux-persist/lib/storage'
-import { breadcrumbReducer } from "@/redux/modules/system/breadcrumb"
-import { tabReducer } from "@/redux/modules/system/tabs"
-import { globalReducer } from "../global"
+import { breadcrumbReducer } from "@/redux/modules/layout/breadcrumb"
+import { tabReducer } from "@/redux/modules/layout/tabs"
+import { globalReducer } from "./global"
+
+// API config
+import loginApi from '@/redux/apis/login/loginApi'
 
 const rootPersistConfig = {
   /**
@@ -35,16 +38,12 @@ const tabPersistConfig = {
 /**
  * root reducer
  */
-// const rootReducer = combineReducers({
-//   breadcrumb: persistReducer(breadcrumbPersistConfig, breadcrumbReducer),
-//   tab: persistReducer(tabPersistConfig, tabReducer),
-// })
 const rootReducer = combineReducers({
   breadcrumb: breadcrumbReducer,
   tab: tabReducer,
-  global: globalReducer
+  global: globalReducer,
+  [loginApi.reducerPath]: loginApi.reducer
 })
-
 
 const rootPersistReducer = persistReducer(rootPersistConfig, rootReducer)
 

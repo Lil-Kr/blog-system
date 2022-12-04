@@ -1,5 +1,4 @@
 import React from 'react'
-// import ReactDOM from 'react-dom/client'
 import ReactDOM from 'react-dom'
 import App from './App'
 import { HashRouter } from 'react-router-dom'
@@ -17,6 +16,7 @@ import 'reset-css'
 
 // 引入全局样式
 import '@/assets/styles/global.scss'
+import '@/assets/iconfont/iconfont.scss'
 import { Spin } from 'antd'
 
 /**

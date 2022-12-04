@@ -5,8 +5,8 @@ import busConfig, { testConfig, homeConfig } from './modules'
 import { handleRouterItems } from '@/utils/router/routerCommonUtil'
 import { UserOutlined } from '@ant-design/icons'
 import { getBreadCrumbItems, getMenuItems, getTabsMap } from '@/utils/common'
-import { RootState, AppDispatch, useAppDispatch, useAppSelector } from '@/redux'
-import { setBreadcrumbMap } from '@/redux/modules/system/breadcrumb'
+
+import Login from '@/views/login'
 
 /**
  * original router config
@@ -28,7 +28,7 @@ const routersConfig: RouteItemType[] = [
 			title: '登录'
 		},
 		path: '/login',
-		element: lazyLoadUtil(lazy(() => import('@/pages/login')))
+		element: <Login />
 	},
 	{
 		meta: {
@@ -37,7 +37,7 @@ const routersConfig: RouteItemType[] = [
 			icon: <UserOutlined />
 		},
 		path: '/loginOut',
-		element: lazyLoadUtil(lazy(() => import('@/pages/login')))
+		element: lazyLoadUtil(lazy(() => import('@/views/login')))
 	},
 	...busConfig
 ]

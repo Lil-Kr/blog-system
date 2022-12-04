@@ -19,7 +19,7 @@ const blogConfig: RouteItemType[] = [
 					icon: <UserOutlined />
 				},
 				path: '/index',
-				element: lazyLoadUtil(lazy(() => import('@/pages/blog')))
+				element: lazyLoadUtil(lazy(() => import('@/views/blog')))
 			}
 		]
 	}

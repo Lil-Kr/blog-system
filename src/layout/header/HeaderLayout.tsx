@@ -1,17 +1,21 @@
 import React, { useState } from 'react'
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons'
 import { Breadcrumb, Layout, Space } from 'antd'
-import BreadcrumbNav from './breadcrumbNav/BreadcrumbNav'
-import CollapsIcon from './collapsIcon/CollapsIcon'
+import BreadcrumbNav from './components/BreadcrumbNav'
+import CollapsIcon from './components/CollapsIcon'
+import LanguageChange from './components/LanguageChange'
+import Theme from './components/Theme'
+import Fullscreen from './components/Fullscreen'
+import AvatarIcon from './components/AvatarIcon'
 
-import './index.scss'
+import styles from './index.module.scss'
 
 const { Header } = Layout
 
 const HeaderLayout = (props) => {
 	let { collapsed, setCollapsed } = props
 	return (
-		<Header className="site-layout-background header-layout" style={{ padding: 0 }}>
+		<Header className={styles.layoutHeader} style={{ padding: 0 }}>
 			<div className="header-lf">
 				{/* collaps icon */}
 				<CollapsIcon collapsed={collapsed} setCollapsed={setCollapsed} />
@@ -19,12 +23,10 @@ const HeaderLayout = (props) => {
 				<BreadcrumbNav />
 			</div>
 			<div className="header-ri">
-				<Space>
-					<div>语言切换</div>
-					<div>主题更改</div>
-					<div>是否全屏</div>
-					<div>用户信息</div>
-				</Space>
+				<LanguageChange />
+				<Theme />
+				<Fullscreen />
+				<AvatarIcon />
 			</div>
 		</Header>
 	)

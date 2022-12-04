@@ -18,7 +18,6 @@
 ## 项目目录
 
 
-
 ## 项目进度
 
 * 项目初始化
@@ -29,8 +28,6 @@
 
 ## 待完成
 
-// todo: 未完成登录页
-// todo: 未完成守卫路由
 // todo: 未完成 mock server
 // todo: 在vite中配置 dev test prod 等环境切换
 // todo: 布局响应式1

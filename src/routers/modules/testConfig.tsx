@@ -21,7 +21,7 @@ const testConfig: RouteItemType[] = [
 			icon: <UserOutlined />
 		},
 		path: '/login',
-		element: lazyLoadUtil(lazy(() => import('@/pages/login')))
+		element: lazyLoadUtil(lazy(() => import('@/views/login')))
 	},
 	{
 		meta: {
@@ -38,7 +38,7 @@ const testConfig: RouteItemType[] = [
 					title: '首页'
 				},
 				path: '/home',
-				element: lazyLoadUtil(lazy(() => import('@/pages/home')))
+				element: lazyLoadUtil(lazy(() => import('@/views/home')))
 			},
 			{
 				meta: {
@@ -54,7 +54,7 @@ const testConfig: RouteItemType[] = [
 							icon: <VideoCameraOutlined />
 						},
 						path: '/menu',
-						element: lazyLoadUtil(lazy(() => import('@/pages/permission/Menu')))
+						element: lazyLoadUtil(lazy(() => import('@/views/permission/Menu')))
 					},
 					{
 						meta: {
@@ -63,7 +63,7 @@ const testConfig: RouteItemType[] = [
 							icon: <UserOutlined />
 						},
 						path: '/role',
-						element: lazyLoadUtil(lazy(() => import('@/pages/permission/Role')))
+						element: lazyLoadUtil(lazy(() => import('@/views/permission/Role')))
 					},
 					{
 						meta: {
@@ -79,7 +79,7 @@ const testConfig: RouteItemType[] = [
 									icon: <UserOutlined />
 								},
 								path: '/btn-1',
-								element: lazyLoadUtil(lazy(() => import('@/pages/permission/Button1')))
+								element: lazyLoadUtil(lazy(() => import('@/views/permission/Button1')))
 							},
 							{
 								meta: {
@@ -88,7 +88,7 @@ const testConfig: RouteItemType[] = [
 									icon: <UserOutlined />
 								},
 								path: '/btn-2',
-								element: lazyLoadUtil(lazy(() => import('@/pages/permission/Button2')))
+								element: lazyLoadUtil(lazy(() => import('@/views/permission/Button2')))
 							}
 						]
 					}

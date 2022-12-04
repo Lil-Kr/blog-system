@@ -19,7 +19,7 @@ const userConfig: RouteItemType[] = [
 					title: '用户信息'
 				},
 				path: '/user/user',
-				element: lazyLoadUtil(lazy(() => import('@/pages/user/User')))
+				element: lazyLoadUtil(lazy(() => import('@/views/user/User')))
 			},
 			{
 				meta: {
@@ -28,7 +28,7 @@ const userConfig: RouteItemType[] = [
 					title: '游客管理'
 				},
 				path: '/touristische',
-				element: lazyLoadUtil(lazy(() => import('@/pages/user/Touristische')))
+				element: lazyLoadUtil(lazy(() => import('@/views/user/Touristische')))
 			}
 		]
 	}

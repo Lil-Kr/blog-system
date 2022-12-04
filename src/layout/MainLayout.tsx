@@ -11,7 +11,7 @@ import { Layout } from 'antd'
 // css
 import styles from './mainLayout.module.scss'
 
-const { Sider, Header, Content } = Layout
+const { Sider } = Layout
 
 const MainLayout = () => {
 	const [collapsed, setCollapsed] = useState(false)
