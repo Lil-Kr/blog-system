@@ -3,7 +3,7 @@ import { menuItems, tabMap } from '@/routers'
 import { Tabs } from 'antd'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { RootState, useAppSelector, useAppDispatch } from '@/redux'
-import { setTabs, removeTab, setTabActive } from '@/redux/modules/system/tabs'
+import { setTabs, removeTab, setTabActive } from '@/redux/modules/layout/tabs'
 import { TabType } from '@/types/common/tabType'
 
 const { TabPane } = Tabs

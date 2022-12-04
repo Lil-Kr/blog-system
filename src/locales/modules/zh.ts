@@ -10,10 +10,10 @@ export default {
 		confirm: "登录",
 		reset: "重置",
 		btn: "登录",
-		usernamePlaceholder: "用户名",
-		pwdPlaceholder: "密码",
-		usernameMessage: "用户名不能为空",
-		pwdMessage: "密码不能为空"
+		username_placeholder: "用户名",
+		password_placeholder: "密码",
+		username_message: "用户名不能为空",
+		password_message: "密码不能为空"
 	},
 	home: {
 		welcome: "欢迎使用"

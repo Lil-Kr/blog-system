@@ -10,10 +10,10 @@ export default {
 		confirm: "Login",
 		reset: "Reset",
 		btn: "Login",
-		usernamePlaceholder: "username",
-		pwdPlaceholder: "password",
-		usernameMessage: "Please input your username!",
-		pwdMessage: "Please input your password!"
+		username_placeholder: "username",
+		password_placeholder: "password",
+		username_message: "Please input your username!",
+		password_message: "Please input your password!"
 	},
 	home: {
 		welcome: "Welcome"

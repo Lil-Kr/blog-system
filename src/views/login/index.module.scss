@@ -1,4 +1,4 @@
-.containerLogin100{
+.containerLogin{
   width: 100%;  
   min-height: 100vh;
   background: #9053c7;
@@ -16,7 +16,6 @@
   justify-items: center;
   align-items: center;
   grid-template-rows: 100vh;
-  // background-color: #f6f6f6;
 }
 
 .lItem {
@@ -42,7 +41,7 @@
     .login-form-button {
       width: 100%;
     }
-    .login100-form-title {
+    .login-form-title {
       width: 300px;
       font-family: Poppins-Bold;
       font-size: 24px;

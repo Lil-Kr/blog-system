@@ -9,7 +9,7 @@ export interface ThemeConfigProp {
 
 /* GlobalState */
 export interface GlobalState {
-  token: string;
+  access_token: string;
   userInfo: any;
   assemblySize: SizeType;
   language: string;

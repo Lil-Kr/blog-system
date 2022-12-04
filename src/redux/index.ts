@@ -7,7 +7,10 @@ import { setupListeners } from '@reduxjs/toolkit/dist/query'
 import { persistStore } from 'redux-persist'
 import rootPersistReducer from '@/redux/modules/persist'
 
-const store: any = configureStore({
+// API config
+import loginApi from '@/redux/apis/login/loginApi'
+
+const store = configureStore({
   reducer: rootPersistReducer,
   /**
    * 让缓存生效
@@ -15,7 +18,7 @@ const store: any = configureStore({
    * @param curryGetDefaultMiddleware 
    * @returns 
    */
-  middleware: curryGetDefaultMiddleware => curryGetDefaultMiddleware({ serializableCheck: false }),
+  middleware: curryGetDefaultMiddleware => curryGetDefaultMiddleware({ serializableCheck: false }).concat(loginApi.middleware),
   devTools: process.env.NODE_ENV !== 'production'
   // devTools: true
 })
