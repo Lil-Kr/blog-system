@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>com.cy</groupId>
-    <artifactId>project</artifactId>
+    <artifactId>system</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
 
