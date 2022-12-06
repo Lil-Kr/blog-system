@@ -6,7 +6,7 @@ import { persistReducer } from "redux-persist"
 import storage from 'redux-persist/lib/storage'
 import { breadcrumbReducer } from "@/redux/modules/layout/breadcrumb"
 import { tabReducer } from "@/redux/modules/layout/tabs"
-import { globalReducer } from "./global"
+import { globalReducer } from "@/redux/modules/global"
 
 // API config
 import loginApi from '@/redux/apis/login/loginApi'

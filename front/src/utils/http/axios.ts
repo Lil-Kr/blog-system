@@ -9,17 +9,15 @@ import { ResponseType } from '@/types/http/responseType'
 
 import { message } from 'antd'
 
-// const { access_token: accessToken } = useAppSelector((state: RootState) => state.global)
-
 // 创建axios实例
 let axiosInstance: AxiosInstance = axios.create({
 	// baseURL: import.meta.env.VITE_APP_PROXY_API,
 	headers: {
-		Accept: 'application/json',
-		'Content-Type': 'application/json'
+		"Accept": "application/json",
+		"Content-Type": "application/json"
 	},
 	// 设置超时时间（10s）
-	timeout: 10000,
+	// timeout: 10000,
 	// 跨域时候允许携带凭证
 	withCredentials: true
 })
@@ -28,7 +26,7 @@ axiosInstance.interceptors.request.use(
 	(config: AxiosRequestConfig) => {
 		// const token = getGlobalToken()
 		// 从redux中获取token
-		const token = state.global.access_token
+		const token = state.global.token
 		if (token) {
 			config.headers.Authorization = token
 		}
@@ -73,12 +71,11 @@ axiosInstance.interceptors.response.use(
 		if (response) {
 			// 请求已发出, 但是不在2xx的范围
 			// console.log('--> 请求已发出, 但是不在2xx的范围 -> response.code:', response.data.status)
-			// message.error(`${response.data.status} ->  ${response.data.error}`)
+			message.error(`${response.status} ->  ${response.statusText}`)
 
 			// const errorResp = Promise.reject(response.data)
 			// console.log('--> errorResp:', errorResp)
-			// const respData = { code: response.data.status, msg: response.data.error, data: '' }
-			const respData = {}
+			const respData = { code: response.status, msg: response.statusText, data: '' }
 			return respData
 		} else {
 			message.error('网络连接异常,请稍后再试!')

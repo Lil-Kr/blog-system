@@ -9,7 +9,7 @@ import { AxiosResponse } from "axios";
 export interface BaseRespDataType {
   code: number | string,
   msg: string,
-  access_token: string,
+  token: string,
   data?: any
 }
 

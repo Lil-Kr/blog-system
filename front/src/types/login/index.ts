@@ -7,13 +7,12 @@ export namespace Login {
     password: string
   }
   export interface ResLoginType {
-    access_token: string
+    token: string
   }
 }
 
 
 export interface UserResType {
-  m
   data:any
 
 }

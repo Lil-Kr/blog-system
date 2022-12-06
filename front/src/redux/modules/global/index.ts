@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { SizeType } from "antd/lib/config-provider/SizeContext"
 
 const globalState: GlobalState = {
-  access_token: "",
+  token: "",
   userInfo: "",
   assemblySize: "middle",
   language: "zh",
@@ -25,10 +25,10 @@ const globalSlice = createSlice({
       state.language = payload
     },
     setAccessToken(state: GlobalState, { payload }: PayloadAction<string>) {
-      state.access_token = payload
+      state.token = payload
     },
     clearAccessToken(state: GlobalState) {
-      state.access_token = ''
+      state.token = ''
     }
   }
 })

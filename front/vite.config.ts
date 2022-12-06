@@ -50,15 +50,17 @@ export default defineConfig({
       less: {
         charset: false,
         javascriptEnabled: true,
+        // additionalData:''
         // modifyVars: {
         //   '@primary-color': '#4377FE',//设置antd主题色
         // },
+      },
+      scss: {
+        charset: false,
+        javascriptEnabled: true,
+        // 此处修改为要被预处理的scss文件地址
+        // additionalData: `@import "@/src/assets/styles/global.scss"`
       }
-      // scss: {
-      // charset: false,
-      // 此处修改为要被预处理的scss文件地址
-      // additionalData: `@import "@/src/assets/styles/global.scss"`
-      // }
     }
   },
   server: {
