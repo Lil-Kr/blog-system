@@ -12,7 +12,7 @@ import org.apache.ibatis.annotations.Param;
  *  Mapper 接口
  * </p>
  *
- * @author CY
+ * @author Lil-K
  * @since 2020-11-29
  */
 public interface SysDictDetailMapper extends BaseMapper<SysDictDetail> {

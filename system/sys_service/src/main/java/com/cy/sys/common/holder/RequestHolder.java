@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * 获取每个进程独立的 request 和 用户信息
- * @author CY
+ * @author Lil-K
  * @since 2020-11-28
  */
 public class RequestHolder {

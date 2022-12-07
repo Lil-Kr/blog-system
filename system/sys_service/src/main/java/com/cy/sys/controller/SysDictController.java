@@ -19,7 +19,7 @@ import java.util.Objects;
 
 /**
  * 数据字典管理
- * @author CY
+ * @author Lil-K
  * @since 2020-11-28
  */
 @RestController

@@ -5,7 +5,7 @@ import com.cy.sys.pojo.entity.SysAcl;
 import java.util.List;
 
 /**
- * @author CY
+ * @author Lil-K
  * @since 2020-11-26
  */
 public interface ISysCoreService {

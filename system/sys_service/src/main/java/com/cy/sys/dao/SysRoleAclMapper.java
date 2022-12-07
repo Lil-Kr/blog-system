@@ -11,7 +11,7 @@ import java.util.List;
  *  Mapper 接口
  * </p>
  *
- * @author CY
+ * @author Lil-K
  * @since 2020-11-24
  */
 public interface SysRoleAclMapper extends BaseMapper<SysRoleAcl> {

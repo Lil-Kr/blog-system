@@ -12,7 +12,7 @@ import java.io.Serializable;
  * 数据字典实体
  * </p>
  *
- * @author CY
+ * @author Lil-K
  * @since 2020-11-29
  */
 @Data

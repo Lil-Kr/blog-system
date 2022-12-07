@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  *  Mapper 接口
  * </p>
  *
- * @author CY
+ * @author Lil-K
  * @since 2020-11-29
  */
 public interface SysDictMapper extends BaseMapper<SysDict> {

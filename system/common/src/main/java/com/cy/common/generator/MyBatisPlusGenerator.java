@@ -37,7 +37,7 @@ public class MyBatisPlusGenerator {
         // 是否支持AR模式
         config.setActiveRecord(true)
                 // 作者
-                .setAuthor("CY")
+                .setAuthor("Lil-K")
                 // 生成路径
                 .setOutputDir(info.getOutputPath())
                 // 文件覆盖
