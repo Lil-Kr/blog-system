@@ -31,6 +31,7 @@
 技术 | 版本 | 官网链接
 ---------|----------|---------
 spring-boot | 2.6.11 | https://spring.io/projects/spring-boot#learn
+spring-cloud-alibaba | xxx | xxx
 mybatis-plus | xxx | xxx
 MySQL | v8.x | xxx
 redis | xxx |xxx
