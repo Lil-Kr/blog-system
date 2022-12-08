@@ -1,6 +1,6 @@
 package com.cy.sys.util.acl;
 
-import com.cy.sys.pojo.dto.acl.AclDto;
+import com.cy.sys.pojo.sys.dto.acl.AclDto;
 
 import java.util.Comparator;
 

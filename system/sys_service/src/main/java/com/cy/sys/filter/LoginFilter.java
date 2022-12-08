@@ -2,7 +2,7 @@ package com.cy.sys.filter;
 
 import com.cy.sys.common.constant.InterceptorName;
 import com.cy.sys.common.holder.RequestHolder;
-import com.cy.sys.pojo.entity.SysUser;
+import com.cy.sys.pojo.sys.entity.SysUser;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.*;

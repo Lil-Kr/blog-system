@@ -1,7 +1,7 @@
 package com.cy.sys.util.aclmodule;
 
-import com.cy.sys.pojo.dto.aclmodule.AclModuleDto;
-import com.cy.sys.pojo.entity.SysAclModule;
+import com.cy.sys.pojo.sys.dto.aclmodule.AclModuleDto;
+import com.cy.sys.pojo.sys.entity.SysAclModule;
 
 import java.util.Comparator;
 
