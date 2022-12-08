@@ -4,8 +4,8 @@
 import { combineReducers } from "@reduxjs/toolkit"
 import { persistReducer } from "redux-persist"
 import storage from 'redux-persist/lib/storage'
-import { breadcrumbReducer } from "@/redux/modules/layout/breadcrumb"
-import { tabReducer } from "@/redux/modules/layout/tabs"
+import { breadcrumbReducer } from "@/redux/modules/global/breadcrumb"
+import { tabReducer } from "@/redux/modules/global/tabs"
 import { globalReducer } from "@/redux/modules/global"
 
 // API config

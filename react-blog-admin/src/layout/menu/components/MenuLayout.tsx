@@ -7,7 +7,7 @@ import { MenuItemType, SubMenuType } from '@/types/common'
 import { getMenuOpenKeysUtil } from '@/utils/common'
 import { breadcrumbMap, menuItems, tabMap } from '@/routers'
 import { useAppDispatch } from '@/redux'
-import { setBreadcrumbMap } from '@/redux/modules/layout/breadcrumb'
+import { setBreadcrumbMap } from '@/redux/modules/global/breadcrumb'
 import { setTab, setTabActive } from '@/redux/modules/layout/tabs'
 
 const MenuLayout = (props) => {

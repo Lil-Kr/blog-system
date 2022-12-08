@@ -11,7 +11,7 @@
 
     <artifactId>common</artifactId>
     <name>common</name>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
     <description>公共模块, 封装各种工具类</description>
 
@@ -102,17 +102,27 @@
         </dependency>
     </dependencies>
 
+
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <!-- 指定该Main Class为全局的唯一入口 -->
+                    <mainClass>com.cy.common.CommonApplication</mainClass>
+                    <!--common 不需要可执行jar-->
+                    <skip>true</skip>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <!--可以把依赖的包都打包到生成的Jar包中 -->
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

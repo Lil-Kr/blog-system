@@ -10,13 +10,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>sys_service</artifactId>
+    <name>sys_service</name>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
 
     <dependencies>
         <!--继承common依赖-->
         <dependency>
             <groupId>com.cy</groupId>
             <artifactId>common</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0.0</version>
         </dependency>
 
         <!--SpringBoot-->
@@ -100,17 +103,26 @@
         </dependency>
     </dependencies>
 
+
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <!-- 指定该Main Class为全局的唯一入口 -->
+                    <mainClass>com.cy.sys.SysServerApplication</mainClass>
+                    <layout>ZIP</layout>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <!--可以把依赖的包都打包到生成的Jar包中 -->
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
