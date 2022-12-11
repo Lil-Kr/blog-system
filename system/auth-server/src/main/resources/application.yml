@@ -1,0 +1,25 @@
+server:
+  port: 8050
+  tomcat:
+    uri-encoding: UTF-8
+  max-http-header-size: 80KB
+
+spring:
+  application:
+    name: auth-server-01
+  profiles:
+    active: dev
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    default-property-inclusion: non_null
+    time-zone: GMT-8
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+
+# mybatis-plus
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*.xml
+  type-aliases-package: com.cy.auth.pojo.**.*
+  global-config:
+    db-config:
+      table-prefix: auth_

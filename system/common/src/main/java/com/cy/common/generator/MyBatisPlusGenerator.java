@@ -84,7 +84,7 @@ public class MyBatisPlusGenerator {
         pkConfig.setParent("com.cy.sys")
                 .setMapper("dao")
                 .setService("service")
-                .setController("controller")
+                .setController("restapi")
                 .setEntity("pojo.entity")
                 .setXml("mapper");
 
