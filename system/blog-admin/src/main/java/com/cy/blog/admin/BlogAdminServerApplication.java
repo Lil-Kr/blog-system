@@ -15,6 +15,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableAsync // 开启异步注解功能
 @EnableScheduling // 开启基于注解的定时任务
 @EnableFeignClients
+//@EnableDiscoveryClient
 public class BlogAdminServerApplication {
 
     public static void main(String[] args) {

@@ -2,7 +2,6 @@ package com.cy.blog.admin.config;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cy.blog.admin.common.constant.InterceptorName;
-import com.cy.blog.admin.common.holder.RequestHolder;
 import com.cy.common.utils.apiUtil.ApiResp;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -78,14 +77,14 @@ public class ApiInterceptor implements HandlerInterceptor {
         log.info("request start. url={}, cost={}",url, end-start);
 
         // 将用户信息和请求信息添加到缓存
-        RequestHolder.remove();
+//        RequestHolder.remove();
     }
 
     /**
      * 移除ThreadLocal中的信息
      */
     public void removeThreadLocalInfo(){
-        RequestHolder.removeHttpServletRequest();
-        RequestHolder.removeUser();
+//        RequestHolder.removeHttpServletRequest();
+//        RequestHolder.removeUser();
     }
 }

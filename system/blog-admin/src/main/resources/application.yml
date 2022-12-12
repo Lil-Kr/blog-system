@@ -6,7 +6,7 @@ server:
 
 spring:
   application:
-    name: blog-admin
+    name: blog-admin-01
   profiles:
     active: test
   jackson:
@@ -15,3 +15,12 @@ spring:
     time-zone: GMT-8
     serialization:
       WRITE_DATES_AS_TIMESTAMPS: false
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: http://192.168.88.100:8848
+#        username: nacos
+#        password: nacos
+#        enabled: true
+#        group: DEFAULT_GROUP
+#        register-enabled: true

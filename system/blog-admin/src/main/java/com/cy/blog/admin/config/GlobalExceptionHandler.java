@@ -1,6 +1,6 @@
 package com.cy.blog.admin.config;
 
-import com.cy.auth.config.exception.ApiException;
+import com.cy.blog.admin.config.exception.ApiException;
 import com.cy.common.utils.apiUtil.ApiResp;
 import com.google.common.collect.Maps;
 import org.springframework.context.annotation.Configuration;

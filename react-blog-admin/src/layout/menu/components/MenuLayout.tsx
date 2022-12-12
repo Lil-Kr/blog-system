@@ -8,7 +8,7 @@ import { getMenuOpenKeysUtil } from '@/utils/common'
 import { breadcrumbMap, menuItems, tabMap } from '@/routers'
 import { useAppDispatch } from '@/redux'
 import { setBreadcrumbMap } from '@/redux/modules/global/breadcrumb'
-import { setTab, setTabActive } from '@/redux/modules/layout/tabs'
+import { setTab, setTabActive } from '@/redux/modules/global/tabs'
 
 const MenuLayout = (props) => {
 	const { collapsed } = props

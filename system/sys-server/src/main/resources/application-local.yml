@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource      # 当前数据源操作类型
+    driver-class-name: com.mysql.cj.jdbc.Driver # mysql驱动包
+    url: jdbc:mysql://localhost:3306/permission?useUnicode=true&characterEncoding-utr-8&useSSL=false&serverTimezone=UTC
+    username: root
+    password: 123456
+#  cloud:
+#    nacos:
+#      config:
+#        group: DEFAULT_GROUP
+#        share-data-ids: ${spring.application.name}-${spring.profiles.active}
+##        refreshable-dataids: ${spring.application.name}-${spring.profiles.active}
+#        server-addr: http://192.168.88.100:8848
+#        namespace: public
+#      discovery:
+#        server-addr: http://192.168.88.100:8848
+#        username: nacos
+#        password: nacos
+#        enabled: true
+#  config:
+#    import:
+#      - optional:nacos:application-uat.yml

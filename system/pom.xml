@@ -19,6 +19,7 @@
     <modules>
         <module>common</module>
         <module>gateway-server</module>
+        <module>nacos-server</module>
         <module>blog-admin</module>
         <module>blog-web</module>
         <module>auth-server</module>
@@ -28,7 +29,6 @@
         <module>picture-server</module>
         <module>search-server</module>
         <module>monitor-server</module>
-        <module>nacos-server</module>
     </modules>
 
     <properties>
@@ -51,7 +51,7 @@
         <spring-cloud-sleuth.version>3.1.4</spring-cloud-sleuth.version>
 
         <!--mybatis-plus-->
-        <mybatis-plus.version>3.5.2</mybatis-plus.version>
+        <mybatis-plus.version>3.4.0</mybatis-plus.version>
         <!--mysql驱动-->
         <mysql.version>8.0.11</mysql.version>
         <druid.version>1.2.15</druid.version>
