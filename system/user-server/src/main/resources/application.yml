@@ -8,22 +8,28 @@ spring:
   application:
     name: user-server-01
   profiles:
-    active: dev
+    active: uat
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     default-property-inclusion: non_null
     time-zone: GMT-8
     serialization:
       WRITE_DATES_AS_TIMESTAMPS: false
-#  cloud:
-#    nacos:
-#      discovery:
-#        server-addr: http://192.168.88.100:8848
-#        username: nacos
-#        password: nacos
-#        enabled: true
-#        group: DEFAULT_GROUP
-#        register-enabled: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://192.168.88.100:8848
+        username: nacos
+        password: nacos
+        group: DEFAULT_GROUP
+        register-enabled: true
+      config:
+        group: DEFAULT_GROUP
+        share-data-ids: ${spring.application.name}-${spring.profiles.active}
+        server-addr: http://192.168.88.100:8848
+        namespace: public
+  config:
+    import: nacos:application-uat.yml
 
 # mybatis-plus
 mybatis-plus:

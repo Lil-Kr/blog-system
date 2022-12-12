@@ -35,6 +35,7 @@
 ---------|----------|---------
 spring-boot | 2.6.11 | https://spring.io/projects/spring-boot#learn
 spring-cloud-alibaba | xxx | xxx
+nacos-server | 2.0.4 | https://github.com/alibaba/nacos/releases/tag/2.0.4
 mybatis-plus | xxx | xxx
 MySQL | v8.x | xxx
 redis | xxx |xxx
@@ -62,7 +63,7 @@ ElasticSearch | xxx | xxx
 服务名 | 端口分配 | 说明 | 集群实例数量
 ---------|----------|---------|---------
  gateway-server | 8010 | 网官 | 1
- nacos-server | 8020 | 服务注册发现, 配置中心 | 1
+ nacos-client | 8020 | 服务注册发现, 配置中心 | 1
  blog-admin | 8030 | 对外提供后台管理的所有api | 1
  blog-web | 8040 | 对外提供web端的所有api | 1
  auth-server | 8050 | 权限服务 | 1
