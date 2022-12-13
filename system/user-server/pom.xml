@@ -55,6 +55,11 @@
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+        </dependency>
+
         <!--MybatisPlus-->
         <dependency>
             <groupId>com.baomidou</groupId>
@@ -102,16 +107,15 @@
         </dependency>
         <!--参数校验 end-->
 
-
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
         </dependency>
 
-        <!--fastjson-->
+        <!--fastjson2-->
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
+            <groupId>com.alibaba.fastjson2</groupId>
+            <artifactId>fastjson2</artifactId>
         </dependency>
 
         <!--junit-->
@@ -120,7 +124,6 @@
             <artifactId>junit</artifactId>
         </dependency>
     </dependencies>
-
 
     <build>
         <finalName>${project.artifactId}</finalName>

@@ -1,6 +1,6 @@
 package com.cy.blog.admin.config;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSON;
 import com.cy.blog.admin.common.constant.InterceptorName;
 import com.cy.common.utils.apiUtil.ApiResp;
 import lombok.extern.slf4j.Slf4j;
@@ -31,7 +31,7 @@ public class ApiInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object object) throws Exception {
         String url = request.getRequestURI();
         Map<String, String[]> parameterMap = request.getParameterMap();
-        log.info("request start. url={}, params={}",url, JSONObject.toJSON(parameterMap));
+        log.info("request start. url={}, params={}",url, JSON.toJSON(parameterMap));
         long start = System.currentTimeMillis();
         request.setAttribute(InterceptorName.startTime,start);
         return true;

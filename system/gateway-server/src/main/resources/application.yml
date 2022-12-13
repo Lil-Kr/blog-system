@@ -1,0 +1,51 @@
+server:
+  port: 8010
+  tomcat:
+    uri-encoding: UTF-8
+  max-http-header-size: 80KB
+
+spring:
+  application:
+    name: gateway-server-01
+  profiles:
+    active: uat
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    default-property-inclusion: non_null
+    time-zone: GMT-8
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+  main:
+    web-application-type: reactive
+  cloud:
+    ## nacos config
+    nacos:
+      discovery:
+        server-addr: http://192.168.88.100:8848
+        username: nacos
+        password: nacos
+        group: DEFAULT_GROUP
+        service: ${spring.application.name}
+        register-enabled: true
+      config:
+        group: DEFAULT_GROUP
+        share-data-ids: ${spring.application.name}-${spring.profiles.active}
+        server-addr: http://192.168.88.100:8848
+        namespace: public
+    ## gateway config
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: baidu
+        uri: https://www.bing.com/?mkt=zh-CN
+        predicates:
+          - Path=/admin/**
+        filters:
+          # 前缀过滤，默认配置下，我们的请求路径是 http://localhost:8888/business-oauth2/** 这时会路由到指定的服务
+          # 此处配置去掉 1 个路径前缀，再配置上面的 Path=/api/**，就能按照 http://localhost:8888/api/** 的方式访问了
+          - StripPrefix=1
+
+  config:
+    import: nacos:application-uat.yml

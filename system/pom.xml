@@ -43,6 +43,7 @@
         <spring-cloud-gateway.version>3.1.4</spring-cloud-gateway.version>
         <spring-cloud-alibaba-nacos.version>2021.0.4.0</spring-cloud-alibaba-nacos.version>
         <spring-cloud-openfeign.version>3.1.4</spring-cloud-openfeign.version>
+        <spring-cloud-loadbalancer.version>3.1.5</spring-cloud-loadbalancer.version>
         <spring-cloud-alibaba-dubbo.version>2021.1</spring-cloud-alibaba-dubbo.version>
         <spring-cloud-alibaba-sentinel.version>2021.0.4.0</spring-cloud-alibaba-sentinel.version>
         <spring-cloud-alibaba-seata.version>2021.0.4.0</spring-cloud-alibaba-seata.version>
@@ -66,14 +67,15 @@
         <junit.version>4.12</junit.version>
         <gson.version>2.10</gson.version>
         <fastjson.version>1.2.73</fastjson.version>
-        <fastjson2.version>2.0.20</fastjson2.version>
+        <fastjson2.version>2.0.21</fastjson2.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <commons-collections.version>3.2.2</commons-collections.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <google-guava.version>31.1-jre</google-guava.version>
-        <validation-api.version>2.0.1.Final</validation-api.version>
+        <jwt.version>3.2.0</jwt.version>
+        <validation-api.version>1.1.0.Final</validation-api.version>
         <velocity-engine.version>2.0</velocity-engine.version>
-        <hibernate-validator.version>7.0.5.Final</hibernate-validator.version>
+        <hibernate-validator.version>5.2.0.Final</hibernate-validator.version>
         <hultool.version>5.5.1</hultool.version>
         <mybatis-plus-generator.version>3.4.0</mybatis-plus-generator.version>
         <arthas-spring-boot.version>3.4.0</arthas-spring-boot.version>
@@ -124,6 +126,13 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-openfeign</artifactId>
                 <version>${spring-cloud-openfeign.version}</version>
+            </dependency>
+
+            <!--loadbalancer-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+                <version>${spring-cloud-loadbalancer.version}</version>
             </dependency>
 
             <!-- Dubbo Spring Cloud Starter 具备RPC通信能力 -->
@@ -292,6 +301,7 @@
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons-lang3.version}</version>
             </dependency>
+
             <!--gson-->
             <dependency>
                 <groupId>com.google.code.gson</groupId>
@@ -303,6 +313,7 @@
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>com.alibaba.fastjson2</groupId>
                 <artifactId>fastjson2</artifactId>
@@ -314,11 +325,13 @@
                 <artifactId>guava</artifactId>
                 <version>${google-guava.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>commons-collections</groupId>
                 <artifactId>commons-collections</artifactId>
                 <version>${commons-collections.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-collections4</artifactId>
@@ -362,6 +375,13 @@
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-generator</artifactId>
                 <version>${mybatis-plus-generator.version}</version>
+            </dependency>
+
+            <!-- JWT -->
+            <dependency>
+                <groupId>com.auth0</groupId>
+                <artifactId>java-jwt</artifactId>
+                <version>${jwt.version}</version>
             </dependency>
             <!--工具包 end-->
         </dependencies>

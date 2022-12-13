@@ -19,8 +19,13 @@ public class LoginServiceImpl implements LoginService {
     private UserServiceFeignClient userServiceFeignClient;
 
     @Override
-    public ApiResp adminLogin(AdminLoginParam param) {
+    public ApiResp adminLogin(AdminLoginParam param) throws Exception {
         // 调用user-server做逻辑判断
-        return userServiceFeignClient.userInfo(param.getLoginAccount(),param.getPassword());
+        return userServiceFeignClient.userInfo(param.getLoginAccount(), param.getPassword());
+    }
+
+    @Override
+    public ApiResp loginOut() throws Exception {
+        return ApiResp.success("登出成功");
     }
 }

@@ -10,7 +10,7 @@ import com.cy.sys.pojo.param.roleacl.RoleAclSaveParam;
  *  服务类
  * </p>
  *
- * @author CY
+ * @author Lil-Kr
  * @since 2020-11-26
  */
 public interface ISysRoleAclService extends IService<SysRoleAcl> {

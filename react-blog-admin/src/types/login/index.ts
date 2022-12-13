@@ -6,6 +6,10 @@ export namespace Login {
     username: string
     password: string
   }
+  export interface AdminLoginFormType {
+    login_account: string
+    password: string
+  }
   export interface ResLoginType {
     token: string
   }

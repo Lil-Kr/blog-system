@@ -25,22 +25,22 @@ import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 import java.util.Objects;
 
 /**
- * @author CY
+ * @author Lil-Kr
  * @since 2020-11-26
  */
 @Service
 @Slf4j
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements ISysUserService {
 
-    @Resource
-    private SysUserMapper sysUserMapper1;
+    @Autowired
+    private SysUserMapper sysUserMapper;
 
     /**
      * 分页查询
@@ -53,7 +53,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         Page<SysUserVo> page = new Page<>(param.getCurrent(), param.getSize());
         page.setCurrent(param.getCurrent());
         page.setSize(param.getSize());
-        IPage<SysUserVo> iPage = sysUserMapper1.selectUserPage(page, param);
+        IPage<SysUserVo> iPage = sysUserMapper.selectUserPage(page, param);
         return ApiResp.success(iPage);
     }
 
@@ -64,7 +64,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
      */
     @Override
     public ApiResp listAll() throws Exception {
-        List<SysUser> users = sysUserMapper1.selectList(new QueryWrapper<>());
+        List<SysUser> users = sysUserMapper.selectList(new QueryWrapper<>());
 
         if (CollectionUtils.isEmpty(users)) {
             return ApiResp.success(Lists.newArrayList());
@@ -86,7 +86,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         query1.eq("surrogate_id",param.getSurrogateId());
         query1.eq("login_account",param.getLoginAccount());
         query1.eq("password",SecureUtil.md5(param.getOldPassword()));
-        SysUser user = sysUserMapper1.selectOne(query1);
+        SysUser user = sysUserMapper.selectOne(query1);
         if (Objects.isNull(user)) {
             return ApiResp.error("用户不存在");
         }
@@ -95,7 +95,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
             return ApiResp.error("用户旧密码不正确");
         }
 
-        Integer updatePwd = sysUserMapper1.updatePasswordById(param);
+        Integer updatePwd = sysUserMapper.updatePasswordById(param);
         if (updatePwd >=1) {
             return ApiResp.success("修改用户密码成功, 请重新登录");
         }else {
@@ -139,7 +139,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         user.setCreateTime(currentTime);
         user.setUpdateTime(currentTime);
         // 新增用户
-        sysUserMapper1.insert(user);
+        sysUserMapper.insert(user);
 
         // TODO 邮件通知用户修改密码
 
@@ -155,7 +155,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
     public SysUser findByLoginAccount(String loginAccount) throws Exception {
         QueryWrapper<SysUser> query1 = new QueryWrapper<>();
         query1.eq(InterceptorName.login_account, loginAccount);
-        SysUser user = sysUserMapper1.selectOne(query1);
+        SysUser user = sysUserMapper.selectOne(query1);
         return user;
     }
 
@@ -179,7 +179,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
         QueryWrapper<SysUser> query1 = new QueryWrapper<>();
         query1.eq("surrogate_id",param.getSurrogateId());
-        SysUser before = sysUserMapper1.selectOne(query1);
+        SysUser before = sysUserMapper.selectOne(query1);
         Preconditions.checkNotNull(before, "待更新的用户不存在");
 
         SysUser user = SysUser.builder().build();
@@ -188,7 +188,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
         UpdateWrapper<SysUser> update1 = new UpdateWrapper<>();
         update1.eq("surrogate_id",param.getSurrogateId());
-        sysUserMapper1.update(user,update1);
+        sysUserMapper.update(user,update1);
         return ApiResp.success("更新用户信息成功");
     }
 
@@ -206,7 +206,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
                 .build();
         UpdateWrapper<SysUser> update1 = new UpdateWrapper<>();
         update1.eq("surrogate_id",param.getSurrogateId());
-        int update = sysUserMapper1.update(user, update1);
+        int update = sysUserMapper.update(user, update1);
         if (update >= 1) {
             return ApiResp.success("删除用户成功");
         }else {
@@ -224,7 +224,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         QueryWrapper<SysUser> query1 = new QueryWrapper<>();
         query1.eq("telephone",telephone);
         query1.eq("surrogate_id",surrogateId);
-        Integer count = sysUserMapper1.selectCount(query1);
+        Integer count = sysUserMapper.selectCount(query1);
         if (count >= 1) {
             return true;
         }else {
@@ -242,7 +242,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         QueryWrapper<SysUser> query1 = new QueryWrapper<>();
         query1.eq("email",email);
         query1.eq("surrogate_id",surrogateId);
-        Integer count = sysUserMapper1.selectCount(query1);
+        Integer count = sysUserMapper.selectCount(query1);
         if (count >= 1) {
             return true;
         }else {
@@ -260,7 +260,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         QueryWrapper<SysUser> query1 = new QueryWrapper<>();
         query1.eq("login_account",account);
         query1.eq("surrogate_id",surrogateId);
-        Integer count = sysUserMapper1.selectCount(query1);
+        Integer count = sysUserMapper.selectCount(query1);
         if (count >= 1) {
             return true;
         }else {

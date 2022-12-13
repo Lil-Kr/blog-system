@@ -7,7 +7,6 @@
         <id column="id" property="id" />
         <result column="surrogate_id" property="surrogateId" />
         <result column="name" property="name" />
-        <result column="type" property="type" />
         <result column="remark" property="remark" />
         <result column="deleted" property="deleted" />
         <result column="operator" property="operator" />
@@ -15,6 +14,11 @@
         <result column="create_time" property="createTime" />
         <result column="update_time" property="updateTime" />
     </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Table_Name">
+        sys_dict
+    </sql>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">

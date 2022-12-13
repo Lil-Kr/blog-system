@@ -32,8 +32,8 @@ public class GlobalExceptionHandler {
      * @return
      * @throws Exception
      */
-    @ExceptionHandler(value = MethodArgumentNotValidException.class)
     @ResponseBody
+    @ExceptionHandler(value = MethodArgumentNotValidException.class)
     public ApiResp validateException(HttpServletRequest request,
                                      MethodArgumentNotValidException exception) throws Exception {
         BindingResult bindingResult = exception.getBindingResult();
@@ -45,8 +45,8 @@ public class GlobalExceptionHandler {
         return ApiResp.error(errorMesssageMap.toString());
     }
 
-    @ExceptionHandler(value = HttpMessageNotReadableException.class)
     @ResponseBody
+    @ExceptionHandler(value = HttpMessageNotReadableException.class)
     public ApiResp validateException(HttpServletRequest request,
                                      HttpMessageNotReadableException exception) throws Exception {
         String message = exception.getMessage();
@@ -63,10 +63,10 @@ public class GlobalExceptionHandler {
      * @return
      * @throws Exception
      */
-    @ExceptionHandler(value = ApiException.class)
     @ResponseBody
+    @ExceptionHandler(value = ApiException.class)
     public ApiResp validateException(HttpServletRequest request,
-                                     ApiException exception) throws Exception{
+                                     ApiException exception) throws Exception {
         return ApiResp.create(exception.getCode(),exception.getMsg(),exception.getData());
     }
 
@@ -77,8 +77,8 @@ public class GlobalExceptionHandler {
      * @param e
      * @return
      */
-    @ExceptionHandler(Exception.class)
     @ResponseBody
+    @ExceptionHandler(Exception.class)
     public ApiResp defaultExceptionHandler(HttpServletRequest req, Exception e) {
         e.printStackTrace();
         return ApiResp.error( "网络异常",e.getLocalizedMessage());

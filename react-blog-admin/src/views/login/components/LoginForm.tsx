@@ -14,7 +14,7 @@ import styles from '../index.module.scss'
 const LoginForm = () => {
 	const dispatch = useAppDispatch()
 	const { t } = useTranslation()
-	const navigate = useNavigate()
+	const navigateTo = useNavigate()
 	const [form] = Form.useForm()
 	const [loading, setLoading] = useState<boolean>(false)
 
@@ -36,14 +36,13 @@ const LoginForm = () => {
 	 * login
 	 * @param values
 	 */
-	const onFinish = (loginInfo: Login.LoginFormType) => {
-		let { username, password } = loginInfo
-		// console.log('success:', username)
-		// console.log('success:', md5(password))
-		console.log('success:', loginInfo)
-		// console.log('--> form:', form)
+	const onFinish = (loginInfo: Login.AdminLoginFormType) => {
+		let { login_account, password } = loginInfo
+		loginInfo.password = md5(password)
 		loginFn(loginInfo).then((res) => {
-			console.log('--> res:', res)
+			// console.log('--> res:', res)
+			navigateTo('/main/home')
+			// todo: 修改 local storge 为 home
 		})
 	}
 
@@ -62,7 +61,7 @@ const LoginForm = () => {
 						autoComplete="off"
 					>
 						<Form.Item
-							name="username"
+							name="login_account"
 							rules={[{ required: true, message: t('login.username_message') }]}
 						>
 							<Input

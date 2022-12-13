@@ -2,6 +2,7 @@ package com.cy.sys.pojo.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
@@ -13,7 +14,7 @@ import java.io.Serializable;
  * 
  * </p>
  *
- * @author CY
+ * @author Lil-Kr
  * @since 2020-11-26
  */
 @Data
@@ -23,6 +24,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@TableName("sys_acl_module")
 public class SysAclModule extends Model<SysAclModule> {
 
     private static final long serialVersionUID = 1L;

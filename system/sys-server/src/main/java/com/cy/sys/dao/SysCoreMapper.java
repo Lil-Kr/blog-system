@@ -5,7 +5,7 @@ package com.cy.sys.dao;
  *  Mapper 接口
  * </p>
  *
- * @author CY
+ * @author Lil-Kr
  * @since 2020-11-24
  */
 public interface SysCoreMapper {

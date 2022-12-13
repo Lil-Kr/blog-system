@@ -8,19 +8,45 @@ spring:
   application:
     name: blog-admin-01
   profiles:
-    active: test
+    active: dev
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     default-property-inclusion: non_null
     time-zone: GMT-8
     serialization:
       WRITE_DATES_AS_TIMESTAMPS: false
-#  cloud:
-#    nacos:
-#      discovery:
-#        server-addr: http://192.168.88.100:8848
-#        username: nacos
-#        password: nacos
-#        enabled: true
-#        group: DEFAULT_GROUP
-#        register-enabled: true
+    property-naming-strategy: SNAKE_CASE
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://192.168.88.100:8848
+        username: nacos
+        password: nacos
+        group: DEFAULT_GROUP
+        service: ${spring.application.name}
+        register-enabled: true
+      config:
+        group: DEFAULT_GROUP
+        share-data-ids: ${spring.application.name}-${spring.profiles.active}
+        server-addr: http://192.168.88.100:8848
+        namespace: public
+
+ribbon:
+  ReadTimeout: 5000 # 请求连接的超时时间
+  ConnectionTimeout: 10000 # 请求处理的超时时间
+
+## open feign config
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: full
+  httpclient:
+    enabled: true # 支持 httpclient 的开关
+    max-connections: 200 # 最大连接数
+    max-connections-per-route: 50 # 单个路径的最大连接数
+
+## logging 相关
+logging:
+  level:
+    com.cy.blog.admin.feignclient: debug

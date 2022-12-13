@@ -10,6 +10,8 @@ import com.cy.common.utils.apiUtil.ApiResp;
  */
 public interface LoginService {
 
-    ApiResp adminLogin(AdminLoginParam param);
+    ApiResp adminLogin(AdminLoginParam param) throws Exception;
+
+    ApiResp loginOut() throws Exception;
 
 }

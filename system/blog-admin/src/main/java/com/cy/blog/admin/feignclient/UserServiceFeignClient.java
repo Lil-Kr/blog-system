@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @Description:
  */
 @Service
-@FeignClient(name = "user-server", path = "user")
+@FeignClient(name = "user-server-01", path = "user")
 public interface UserServiceFeignClient {
 
-    @GetMapping("userInfo/{loginAccount}/{password}")
-    ApiResp userInfo(@PathVariable String loginAccount, @PathVariable String password);
+    @GetMapping("/userInfo/{loginAccount}/{password}")
+    ApiResp userInfo(@PathVariable("loginAccount") String loginAccount, @PathVariable("password") String password);
 
 }

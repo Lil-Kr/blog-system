@@ -19,14 +19,14 @@ import java.util.Objects;
  * @since 2020-11-26
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping("user")
 public class UserApi {
 
     @Autowired
     private UserService userService;
 
-    @GetMapping("userInfo/{loginAccount}/{password}")
-    public ApiResp userInfo(@PathVariable String loginAccount, @PathVariable String password) throws Exception {
+    @GetMapping("/userInfo/{loginAccount}/{password}")
+    public ApiResp userInfo(@PathVariable("loginAccount") String loginAccount, @PathVariable("password") String password) throws Exception {
         User user = userService.findByLoginAccountAndPwd(loginAccount,password);
         if (Objects.isNull(user)) {
             return ApiResp.error("用户不存在");
@@ -41,7 +41,7 @@ public class UserApi {
      * @return
      * @throws Exception
      */
-    @PostMapping("listPage")
+    @PostMapping("/listPage")
     public ApiResp listPage(@RequestBody @Valid UserListPageParam param) throws Exception {
         return userService.listPage(param);
     }
@@ -52,7 +52,7 @@ public class UserApi {
      * @return
      * @throws Exception
      */
-    @PostMapping("save")
+    @PostMapping("/save")
     public ApiResp save(@RequestBody @Valid UserSaveParam param) throws Exception {
 
         if (Objects.nonNull(param.getId()) && Objects.nonNull(param.getSurrogateId())) {// update
@@ -68,7 +68,7 @@ public class UserApi {
      * @return
      * @throws Exception
      */
-    @PostMapping("add")
+    @PostMapping("/add")
     public ApiResp add(@RequestBody @Valid UserSaveParam param) throws Exception {
         return userService.add(param);
     }
@@ -79,7 +79,7 @@ public class UserApi {
      * @return
      * @throws Exception
      */
-    @PostMapping("edit")
+    @PostMapping("/edit")
     public ApiResp edit(@RequestBody @Valid UserSaveParam param) throws Exception {
         return userService.edit(param);
     }
@@ -90,7 +90,7 @@ public class UserApi {
      * @return
      * @throws Exception
      */
-    @PostMapping("delete")
+    @PostMapping("/delete")
     public ApiResp delete(@RequestBody @Valid UserDelParam param) throws Exception {
         return userService.delete(param);
     }
@@ -101,7 +101,7 @@ public class UserApi {
      * @return
      * @throws Exception
      */
-    @PostMapping("updatePassword")
+    @PostMapping("/updatePassword")
     public ApiResp updatePassword(@RequestBody @Valid UserUpdatePwdParam param) throws Exception {
         return userService.updatePassword(param);
     }

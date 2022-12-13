@@ -6,10 +6,7 @@ import com.cy.common.utils.apiUtil.ApiResp;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -33,8 +30,13 @@ public class AdminLoginApi {
      * @return
      */
     @PutMapping("/login")
-    public ApiResp login(@Valid @RequestBody AdminLoginParam param){
+    public ApiResp login(@Valid @RequestBody AdminLoginParam param) throws Exception {
         return loginService.adminLogin(param);
+    }
+
+    @GetMapping("loginOut")
+    public ApiResp loginOut() throws Exception {
+        return loginService.loginOut();
     }
 
 }

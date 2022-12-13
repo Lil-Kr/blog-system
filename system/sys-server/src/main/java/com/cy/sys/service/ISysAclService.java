@@ -11,7 +11,7 @@ import com.cy.sys.pojo.param.acl.AclParam;
  *  服务类
  * </p>
  *
- * @author CY
+ * @author Lil-Kr
  * @since 2020-11-26
  */
 public interface ISysAclService extends IService<SysAcl> {

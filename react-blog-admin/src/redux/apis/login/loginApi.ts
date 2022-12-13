@@ -21,15 +21,15 @@ const loginApi = createApi({
   // }),
   baseQuery: axiosBaseQuery({
     baseUrl: VITE_APP_PROXY_API,
-    url: '/sys'
+    url: '/admin'
   }),
   endpoints(build) {
     return {
       login: build.mutation({
-        query(loginInfo: Login.LoginFormType) {
+        query(loginInfo: Login.AdminLoginFormType) {
           return {
             url: '/login',
-            method: 'POST',
+            method: 'PUT',
             body: loginInfo
           }
         }

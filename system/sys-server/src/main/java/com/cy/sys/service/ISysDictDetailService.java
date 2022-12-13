@@ -10,7 +10,7 @@ import com.cy.sys.pojo.param.dict.DictSaveDetailParam;
  * <p>
  *  字典明细服务类
  * </p>
- * @author CY
+ * @author Lil-Kr
  * @since 2020-11-29
  */
 public interface ISysDictDetailService extends IService<SysDictDetail> {

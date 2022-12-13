@@ -13,7 +13,7 @@ import com.cy.sys.pojo.param.org.OrgParam;
  *  服务类
  * </p>
  *
- * @author CY
+ * @author Lil-Kr
  * @since 2020-11-24
  */
 public interface ISysOrgService extends IService<SysOrg> {

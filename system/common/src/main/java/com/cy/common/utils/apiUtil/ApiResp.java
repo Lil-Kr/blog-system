@@ -22,8 +22,10 @@ public final class ApiResp<T> {
     /** 成功编码 */
     public static final Integer CODE_SUCCESS = 0;
 
-
     /**状态码*/
+    private int stateCode;
+
+    /**响应码*/
     private int code;
 
     /**响应信息**/
@@ -41,6 +43,15 @@ public final class ApiResp<T> {
      */
     public static ApiResp create(Integer code, String msg, Object data) {
         return new ApiResp(code,msg,data);
+    }
+
+    /**
+     * 成功
+     * @param msg
+     * @return
+     */
+    public static ApiResp success(String msg) {
+        return create(CODE_SUCCESS,msg,null);
     }
 
     /**

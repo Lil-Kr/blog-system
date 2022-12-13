@@ -2,6 +2,7 @@ package com.cy.sys.pojo.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.*;
 
@@ -12,7 +13,7 @@ import java.io.Serializable;
  * 数据字典实体
  * </p>
  *
- * @author CY
+ * @author Lil-Kr
  * @since 2020-11-29
  */
 @Data
@@ -21,6 +22,7 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@TableName("sys_dict")
 public class SysDict extends Model<SysDict> {
 
     private static final long serialVersionUID = 1L;

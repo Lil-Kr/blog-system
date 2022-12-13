@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * mp 分页配置
- * @author CY
+ * @author Lil-Kr
  * @since 2020-11-12
  */
 @Configuration

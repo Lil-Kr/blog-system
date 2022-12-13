@@ -2,7 +2,7 @@ package com.cy.sys.common.constant;
 
 /**
  * @Description:
- * @Author: CY
+ * @Author: Lil-Kr
  * @Date: 2020/11/30
  */
 public class InterceptorName {

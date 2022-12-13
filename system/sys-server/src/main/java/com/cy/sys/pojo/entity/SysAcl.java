@@ -2,6 +2,7 @@ package com.cy.sys.pojo.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.*;
 
@@ -12,7 +13,7 @@ import java.io.Serializable;
  * 
  * </p>
  *
- * @author CY
+ * @author Lil-Kr
  * @since 2020-11-26
  */
 @Data
@@ -21,6 +22,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@TableName("sys_acl")
 public class SysAcl extends Model<SysAcl> {
 
     private static final long serialVersionUID = 1L;
@@ -28,7 +30,7 @@ public class SysAcl extends Model<SysAcl> {
     /**
      * 自增主键
      */
-      @TableId(value = "id", type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**

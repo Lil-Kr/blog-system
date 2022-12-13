@@ -13,7 +13,7 @@ import org.apache.ibatis.annotations.Param;
  *  Mapper 接口
  * </p>
  *
- * @author CY
+ * @author Lil-Kr
  * @since 2020-11-24
  */
 public interface SysRoleMapper extends BaseMapper<SysRole> {

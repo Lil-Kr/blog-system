@@ -1,9 +1,9 @@
 package com.cy.blog.admin.pojo.param;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.ToString;
-
-import javax.validation.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -15,8 +15,8 @@ import javax.validation.constraints.NotNull;
 @ToString
 public class AdminLoginParam {
 
-    @NotNull(message = "loginAccount不能为空")
-    @NotBlank
+    @NotNull(message = "login_account不能为空")
+    @JsonProperty("login_account")
     private String loginAccount;
 
     @NotNull(message = "password不能为空")

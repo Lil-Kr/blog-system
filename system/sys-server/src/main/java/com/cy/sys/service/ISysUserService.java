@@ -13,7 +13,7 @@ import com.cy.sys.pojo.param.user.UserUpdatePwdParam;
  *  服务类
  * </p>
  *
- * @author CY
+ * @author Lil-Kr
  * @since 2020-11-26
  */
 public interface ISysUserService extends IService<SysUser> {
