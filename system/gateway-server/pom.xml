@@ -37,6 +37,12 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- spring-boot-security -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
         <!--spring cloud alibaba-->
         <!--nacos 服务注册与发现 -->
         <dependency>
@@ -150,7 +156,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <!-- 指定该Main Class为全局的唯一入口 -->
-                    <mainClass>com.cy.sys.SysServerApplication</mainClass>
+                    <mainClass>com.cy.gateway.GatewayServerApplication</mainClass>
                     <layout>ZIP</layout>
                 </configuration>
                 <executions>

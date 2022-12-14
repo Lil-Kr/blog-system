@@ -1,12 +1,12 @@
 server:
-  port: 8030
+  port: 8040
   tomcat:
     uri-encoding: UTF-8
   max-http-header-size: 80KB
 
 spring:
   application:
-    name: blog-admin-01
+    name: blog-web-01
   profiles:
     active: dev
   jackson:
@@ -35,4 +35,4 @@ feign:
 ## logging 相关
 logging:
   level:
-    com.cy.blog.admin.feignclient: debug
+    com.cy.blog.web.feignclient: debug

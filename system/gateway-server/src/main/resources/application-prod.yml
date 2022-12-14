@@ -5,3 +5,35 @@ spring:
     url: jdbc:mysql://localhost:3306/permission?useUnicode=true&characterEncoding-utr-8&useSSL=false&serverTimezone=UTC
     username: root
     password: 123456
+  cloud:
+    ## nacos config
+    nacos:
+      discovery:
+        server-addr: http://192.168.88.100:8848
+        username: nacos
+        password: nacos
+        group: DEFAULT_GROUP
+        service: ${spring.application.name}
+        register-enabled: true
+      config:
+        group: DEFAULT_GROUP
+        share-data-ids: ${spring.application.name}-${spring.profiles.active}
+        server-addr: http://192.168.88.100:8848
+        namespace: public
+    ## gateway config
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        ## 需要路由到的server name
+        - id: blog-admin-01
+          uri: http://local
+          predicates:
+            - Path=/admin/**
+          filters:
+            # 前缀过滤，默认配置下，我们的请求路径是 http://localhost:8888/business-oauth2/** 这时会路由到指定的服务
+            # 此处配置去掉 1 个路径前缀，再配置上面的 Path=/api/**，就能按照 http://localhost:8888/api/** 的方式访问了
+            - StripPrefix=1
+  config:
+    import: nacos:application-prod.yml

@@ -79,7 +79,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(Exception.class)
     @ResponseBody
-    public ApiResp defaultExceptionHandler(HttpServletRequest req, Exception e) {
+    public ApiResp defaultExceptionHandler(HttpServletRequest req, Exception e) throws Exception{
         e.printStackTrace();
         return ApiResp.error( "网络异常",e.getLocalizedMessage());
     }

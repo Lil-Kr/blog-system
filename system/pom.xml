@@ -47,7 +47,6 @@
         <spring-cloud-alibaba-dubbo.version>2021.1</spring-cloud-alibaba-dubbo.version>
         <spring-cloud-alibaba-sentinel.version>2021.0.4.0</spring-cloud-alibaba-sentinel.version>
         <spring-cloud-alibaba-seata.version>2021.0.4.0</spring-cloud-alibaba-seata.version>
-        <!--<spring-cloud-stream.version>3.2.5</spring-cloud-stream.version>-->
         <spring-cloud-alibaba-stream-rocketmq.version>2021.0.4.0</spring-cloud-alibaba-stream-rocketmq.version>
         <spring-cloud-sleuth.version>3.1.4</spring-cloud-sleuth.version>
 
@@ -203,33 +202,38 @@
                 <version>${spring-boot.version}</version>
             </dependency>
 
+            <!-- spring-boot-webflux -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-webflux</artifactId>
                 <version>${spring-boot.version}</version>
             </dependency>
 
+            <!-- spring-boot-security -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-security</artifactId>
                 <version>${spring-boot.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-test</artifactId>
-                <version>${spring-boot.version}</version>
-            </dependency>
-
+            <!-- spring-boot-aop -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-aop</artifactId>
                 <version>${spring-boot.version}</version>
             </dependency>
 
+            <!-- spring-boot-configuration-processor -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-configuration-processor</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+
+            <!-- spring-boot-test -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
                 <version>${spring-boot.version}</version>
             </dependency>
             <!--spring boot end-->
@@ -266,14 +270,14 @@
                 <version>${slf4j.version}</version>
             </dependency>
 
-            <!--Mysql-->
+            <!--MySQL-->
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.version}</version>
             </dependency>
 
-            <!--redis-->
+            <!--Redis-->
             <dependency>
                 <groupId>redis.clients</groupId>
                 <artifactId>jedis</artifactId>
@@ -281,14 +285,14 @@
                 <type>jar</type>
             </dependency>
 
-            <!--连接池-->
+            <!-- druid 连接池 -->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.version}</version>
             </dependency>
 
-            <!--检测工具-->
+            <!-- 检测工具 -->
             <dependency>
                 <groupId>com.taobao.arthas</groupId>
                 <artifactId>arthas-spring-boot-starter</artifactId>
@@ -308,18 +312,22 @@
                 <artifactId>gson</artifactId>
                 <version>${gson.version}</version>
             </dependency>
+
+            <!-- fastjson -->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
 
+            <!-- fastjson2 -->
             <dependency>
                 <groupId>com.alibaba.fastjson2</groupId>
                 <artifactId>fastjson2</artifactId>
                 <version>${fastjson2.version}</version>
             </dependency>
 
+            <!-- guava -->
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>

@@ -5,3 +5,75 @@ spring:
     url: jdbc:mysql://localhost:3306/permission?useUnicode=true&characterEncoding-utr-8&useSSL=false&serverTimezone=UTC
     username: root
     password: 123456
+  cloud:
+    ## nacos config
+    nacos:
+      discovery:
+        server-addr: http://192.168.88.100:8848
+        username: nacos
+        password: nacos
+        group: DEFAULT_GROUP
+        service: ${spring.application.name}
+        register-enabled: true
+      config:
+        group: DEFAULT_GROUP
+        share-data-ids: ${spring.application.name}-${spring.profiles.active}
+        server-addr: http://192.168.88.100:8848
+        namespace: public
+    ## gateway config
+    gateway:
+#      globalcors:
+#        cors-configurations:
+#          '[/**]':
+#            allowedOrigins: "*"
+#            allowedHeaders: "*"
+#            allowCredentials: true
+#            allowedMethods:
+#              - GET
+#              - POST
+#              - PUT
+#              - DELETE
+#              - OPTIONS
+      # 设置与服务注册发现组件结合，这样可以采用服务名的路由策略
+      discovery:
+        locator:
+          enabled: true
+      # 配置路由规则
+      routes:
+        ## 需要路由到的 server name
+        - id: blog-admin-01
+          # 采用 LoadBalanceClient 方式请求, 以 lb:// 开头, 后面的是注册在 Nacos 上的服务名
+          uri: lb://blog-admin-01
+          # Predicate 翻译过来是"谓词"的意思，必须配置这个属性，主要作用是匹配用户的请求，有很多种用法
+          predicates:
+            - Path=/blog-admin/**
+          filters:
+            # 前缀过滤，默认配置下，我们的请求路径是 http://localhost:8888/business-oauth2/** 这时会路由到指定的服务
+            # 此处配置去掉 1 个路径前缀，再配置上面的 Path=/api/**，就能按照 http://localhost:8888/api/** 的方式访问了
+            - StripPrefix=1
+        - id: blog-web-01
+          uri: lb://blog-web-01
+          predicates:
+            - Path=/blog-web/**
+          filters:
+            - StripPrefix=1
+  config:
+    import: nacos:application-dev.yml
+
+## gateway endpoint
+management:
+  endpoint:
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: gateway
+
+## logging 相关
+logging:
+  level:
+    org.springframework.cloud.gateway: trace
+    org.springframework.http.server.reactive: debug
+    org.springframework.web.reactive: debug
+    reactor.ipc.netty: debug

@@ -6,6 +6,7 @@
 
 - [博客系统项目信息](#博客系统项目信息)
   - [项目开发版本说明](#项目开发版本说明)
+    - [VM 虚拟机搭建](#vm-虚拟机搭建)
     - [前端架构](#前端架构)
     - [后端架构](#后端架构)
   - [后端服务端口规划](#后端服务端口规划)
@@ -15,6 +16,13 @@
 <!-- /code_chunk_output -->
 
 ## 项目开发版本说明
+
+### VM 虚拟机搭建
+
+* 暂时规划5个虚拟机节点
+  * **存储相关的服务器1台**
+  * **中间件1台**
+  * **3台业务服务器**
 
 ### 前端架构
 
@@ -34,12 +42,13 @@
 技术 | 版本 | 官网链接
 ---------|----------|---------
 spring-boot | 2.6.11 | https://spring.io/projects/spring-boot#learn
-spring-cloud-alibaba | xxx | xxx
+spring-cloud-netflix | 2021.0.4 | https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E
+spring-cloud-alibaba | 2021.0.4 | https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E
+Spring Security | xxx | xxx
 nacos-server | 2.0.4 | https://github.com/alibaba/nacos/releases/tag/2.0.4
 mybatis-plus | xxx | xxx
 MySQL | v8.x | xxx
-redis | xxx |xxx
-Spring Security | xxx | xxx
+Redis | xxx |xxxR
 ElasticSearch | xxx | xxx
 
 ----
