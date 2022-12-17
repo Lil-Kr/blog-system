@@ -22,6 +22,12 @@
             <version>1.0.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.cy</groupId>
+            <artifactId>downstream-model</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
         <!--SpringBoot-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -125,6 +131,7 @@
                     <!-- 指定该Main Class为全局的唯一入口 -->
                     <mainClass>com.cy.blog.admin.BlogAdminServerApplication</mainClass>
                     <layout>ZIP</layout>
+                    <skip>false</skip>
                 </configuration>
                 <executions>
                     <execution>

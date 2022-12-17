@@ -34,7 +34,7 @@ spring:
 #              - PUT
 #              - DELETE
 #              - OPTIONS
-      # 设置与服务注册发现组件结合，这样可以采用服务名的路由策略
+      # 设置与服务注册发现组件结合, 这样可以采用服务名的路由策略
       discovery:
         locator:
           enabled: true
@@ -48,8 +48,9 @@ spring:
           predicates:
             - Path=/blog-admin/**
           filters:
-            # 前缀过滤，默认配置下，我们的请求路径是 http://localhost:8888/business-oauth2/** 这时会路由到指定的服务
-            # 此处配置去掉 1 个路径前缀，再配置上面的 Path=/api/**，就能按照 http://localhost:8888/api/** 的方式访问了
+            ## 前缀过滤，默认配置下，我们的请求路径是 http://localhost:8888/business-oauth2/** 这时会路由到指定的服务
+            ## 此处配置去掉 1 个路径前缀，再配置上面的 Path=/restapi/**，就能按照 http://localhost:8888/api/** 的方式访问了
+            ## 将 /blog-admin/**  重写为/**, 将第一个路径去掉(去掉blog-admin)
             - StripPrefix=1
         - id: blog-web-01
           uri: lb://blog-web-01
@@ -59,6 +60,13 @@ spring:
             - StripPrefix=1
   config:
     import: nacos:application-dev.yml
+
+## 配置需要skip的path
+gateway-config:
+  url:
+    skip-urls:
+      - /blog-admin/admin/**
+
 
 ## gateway endpoint
 management:

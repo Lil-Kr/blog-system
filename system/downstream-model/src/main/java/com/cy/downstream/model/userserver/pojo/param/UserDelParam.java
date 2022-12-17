@@ -1,4 +1,4 @@
-package com.cy.user.pojo.param;
+package com.cy.downstream.model.userserver.pojo.param;
 
 import lombok.Data;
 import lombok.ToString;

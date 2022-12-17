@@ -3,10 +3,10 @@ package com.cy.user.dao;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.cy.user.pojo.entity.User;
-import com.cy.user.pojo.param.UserListPageParam;
-import com.cy.user.pojo.param.UserUpdatePwdParam;
-import com.cy.user.pojo.vo.UserVo;
+import com.cy.downstream.model.userserver.pojo.entity.User;
+import com.cy.downstream.model.userserver.pojo.param.UserListPageParam;
+import com.cy.downstream.model.userserver.pojo.param.UserUpdatePwdParam;
+import com.cy.downstream.model.userserver.pojo.vo.UserVo;
 import org.apache.ibatis.annotations.Param;
 
 /**

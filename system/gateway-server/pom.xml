@@ -38,10 +38,10 @@
         </dependency>
 
         <!-- spring-boot-security -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
+        </dependency>-->
 
         <!--spring cloud alibaba-->
         <!--nacos 服务注册与发现 -->
@@ -121,7 +121,7 @@
         <!--参数校验 start-->
         <!--<dependency>
             <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
+            <artifactId>validation-restapi</artifactId>
         </dependency>
 
         <dependency>

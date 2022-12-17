@@ -18,6 +18,7 @@
     <!-- 引入子模块名 -->
     <modules>
         <module>common</module>
+        <module>downstream-model</module>
         <module>gateway-server</module>
         <module>nacos-server</module>
         <module>blog-admin</module>
@@ -29,6 +30,7 @@
         <module>picture-server</module>
         <module>search-server</module>
         <module>monitor-server</module>
+        <module>security-server</module>
     </modules>
 
     <properties>
@@ -71,13 +73,15 @@
         <commons-collections.version>3.2.2</commons-collections.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <google-guava.version>31.1-jre</google-guava.version>
-        <jwt.version>3.2.0</jwt.version>
         <validation-api.version>1.1.0.Final</validation-api.version>
         <velocity-engine.version>2.0</velocity-engine.version>
         <hibernate-validator.version>5.2.0.Final</hibernate-validator.version>
-        <hultool.version>5.5.1</hultool.version>
+        <hultool.version>5.8.10</hultool.version>
         <mybatis-plus-generator.version>3.4.0</mybatis-plus-generator.version>
         <arthas-spring-boot.version>3.4.0</arthas-spring-boot.version>
+        <jwt.version>4.2.1</jwt.version>
+        <joda-time.version>2.12.2</joda-time.version>
+        <mapstruct.version>1.5.3.Final</mapstruct.version>
     </properties>
 
     <dependencyManagement>
@@ -196,6 +200,7 @@
                 <version>${spring-boot.version}</version>
             </dependency>
 
+            <!-- spring-boot-starter-actuator -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-actuator</artifactId>
@@ -390,6 +395,18 @@
                 <groupId>com.auth0</groupId>
                 <artifactId>java-jwt</artifactId>
                 <version>${jwt.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>${joda-time.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${mapstruct.version}</version>
             </dependency>
             <!--工具包 end-->
         </dependencies>

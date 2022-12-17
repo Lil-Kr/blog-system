@@ -1,10 +1,8 @@
 package com.cy.blog.admin.feignclient;
 
-import com.cy.common.utils.apiUtil.ApiResp;
+import com.cy.downstream.model.userserver.api.UserServerApi;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  * @Author: Lil-K
@@ -13,9 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
  */
 @Service
 @FeignClient(name = "user-server-01", path = "user")
-public interface UserServiceFeignClient {
-
-    @GetMapping("/userInfo/{loginAccount}/{password}")
-    ApiResp userInfo(@PathVariable("loginAccount") String loginAccount, @PathVariable("password") String password);
+public interface UserServiceFeignClient extends UserServerApi {
 
 }

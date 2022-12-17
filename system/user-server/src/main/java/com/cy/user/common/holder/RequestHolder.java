@@ -1,6 +1,7 @@
 package com.cy.user.common.holder;
 
-import com.cy.user.pojo.entity.User;
+
+import com.cy.downstream.model.userserver.pojo.entity.User;
 
 import javax.servlet.http.HttpServletRequest;
 

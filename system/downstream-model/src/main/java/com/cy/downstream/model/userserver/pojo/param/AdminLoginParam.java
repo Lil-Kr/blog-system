@@ -1,9 +1,10 @@
-package com.cy.blog.admin.pojo.param;
+package com.cy.downstream.model.userserver.pojo.param;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.ToString;
 import org.hibernate.validator.constraints.NotBlank;
+
 import javax.validation.constraints.NotNull;
 
 /**

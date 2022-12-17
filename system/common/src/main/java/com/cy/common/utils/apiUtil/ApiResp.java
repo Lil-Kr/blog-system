@@ -14,13 +14,19 @@ import lombok.ToString;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 public final class ApiResp<T> {
     /** 错误编码 */
-    public static final Integer CODE_ERROR = -1;
+    public static final int CODE_ERROR = -1;
+    /**
+     * token校验失败错误码
+     */
+    public static final int CODE_ERROR_TOKEN = 401;
+
+    public static final int CODE_ERROR_TOKEN_EXPIRED = 403;
 
     /** 失败编码 */
-    public static final Integer CODE_FAILURE = 1;
+    public static final int CODE_FAILURE = 1;
 
     /** 成功编码 */
-    public static final Integer CODE_SUCCESS = 0;
+    public static final int CODE_SUCCESS = 0;
 
     /**状态码*/
     private int stateCode;
@@ -41,7 +47,7 @@ public final class ApiResp<T> {
      * @param data
      * @return
      */
-    public static ApiResp create(Integer code, String msg, Object data) {
+    public static ApiResp create(int code, String msg, Object data) {
         return new ApiResp(code,msg,data);
     }
 
@@ -110,6 +116,20 @@ public final class ApiResp<T> {
      */
     public static ApiResp error(String msg) {
         return create(CODE_ERROR,msg, null);
+    }
+
+    /**
+     * token 相关error
+     * @param code
+     * @param msg
+     * @return
+     */
+    public static ApiResp errorToken(int code, String msg) {
+        return create(code, msg, null);
+    }
+
+    public static ApiResp errorToken(int code, String msg, Object data) {
+        return create(code, msg, data);
     }
 
     public ApiResp(int code, String msg, T data) {

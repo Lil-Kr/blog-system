@@ -1,6 +1,6 @@
-package com.cy.user.pojo.vo;
+package com.cy.downstream.model.userserver.pojo.vo;
 
-import com.cy.user.pojo.entity.User;
+import com.cy.downstream.model.userserver.pojo.entity.User;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import lombok.ToString;

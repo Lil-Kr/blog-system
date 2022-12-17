@@ -35,4 +35,4 @@ feign:
 ## logging 相关
 logging:
   level:
-    com.cy.blog.web.feignclient: debug
+#    com.cy.blog.web.feignclient: debug

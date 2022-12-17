@@ -1,7 +1,7 @@
 package com.cy.blog.admin.service;
 
-import com.cy.blog.admin.pojo.param.AdminLoginParam;
 import com.cy.common.utils.apiUtil.ApiResp;
+import com.cy.downstream.model.userserver.pojo.param.AdminLoginParam;
 
 /**
  * @Author: Lil-K

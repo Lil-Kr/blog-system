@@ -1,12 +1,12 @@
 package com.cy.user.servic;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.cy.user.pojo.entity.User;
-import com.cy.user.pojo.param.UserDelParam;
-import com.cy.user.pojo.param.UserListPageParam;
-import com.cy.user.pojo.param.UserSaveParam;
-import com.cy.user.pojo.param.UserUpdatePwdParam;
 import com.cy.common.utils.apiUtil.ApiResp;
+import com.cy.downstream.model.userserver.pojo.entity.User;
+import com.cy.downstream.model.userserver.pojo.param.UserDelParam;
+import com.cy.downstream.model.userserver.pojo.param.UserListPageParam;
+import com.cy.downstream.model.userserver.pojo.param.UserSaveParam;
+import com.cy.downstream.model.userserver.pojo.param.UserUpdatePwdParam;
 
 /**
  * <p>

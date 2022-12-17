@@ -1,16 +1,17 @@
 package com.cy.user.restapi;
 
+import com.cy.downstream.model.userserver.api.UserServerApi;
+import com.cy.downstream.model.userserver.pojo.entity.User;
+import com.cy.downstream.model.userserver.pojo.param.UserDelParam;
+import com.cy.downstream.model.userserver.pojo.param.UserListPageParam;
+import com.cy.downstream.model.userserver.pojo.param.UserSaveParam;
+import com.cy.downstream.model.userserver.pojo.param.UserUpdatePwdParam;
 import com.cy.common.utils.apiUtil.ApiResp;
-import com.cy.user.pojo.entity.User;
-import com.cy.user.pojo.param.UserDelParam;
-import com.cy.user.pojo.param.UserListPageParam;
-import com.cy.user.pojo.param.UserSaveParam;
-import com.cy.user.pojo.param.UserUpdatePwdParam;
 import com.cy.user.servic.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
 import java.util.Objects;
 
 /**
@@ -20,14 +21,14 @@ import java.util.Objects;
  */
 @RestController
 @RequestMapping("user")
-public class UserApi {
+public class UserApi implements UserServerApi {
 
     @Autowired
     private UserService userService;
 
-    @GetMapping("/userInfo/{loginAccount}/{password}")
-    public ApiResp userInfo(@PathVariable("loginAccount") String loginAccount, @PathVariable("password") String password) throws Exception {
-        User user = userService.findByLoginAccountAndPwd(loginAccount,password);
+    @Override
+    public ApiResp userInfo(String loginAccount, String password) throws Exception {
+        User user = userService.findByLoginAccountAndPwd(loginAccount, password);
         if (Objects.isNull(user)) {
             return ApiResp.error("用户不存在");
         }else {
@@ -35,26 +36,13 @@ public class UserApi {
         }
     }
 
-    /**
-     * 分页查询列表
-     * @param param
-     * @return
-     * @throws Exception
-     */
-    @PostMapping("/listPage")
-    public ApiResp listPage(@RequestBody @Valid UserListPageParam param) throws Exception {
+    @Override
+    public ApiResp listPage(UserListPageParam param) throws Exception {
         return userService.listPage(param);
     }
 
-    /**
-     * 保存用户信息
-     * @param param
-     * @return
-     * @throws Exception
-     */
-    @PostMapping("/save")
-    public ApiResp save(@RequestBody @Valid UserSaveParam param) throws Exception {
-
+    @Override
+    public ApiResp save(UserSaveParam param) throws Exception {
         if (Objects.nonNull(param.getId()) && Objects.nonNull(param.getSurrogateId())) {// update
             return userService.edit(param);
         }else { // insert
@@ -62,48 +50,23 @@ public class UserApi {
         }
     }
 
-    /**
-     * 添加用户信息
-     * @param param
-     * @return
-     * @throws Exception
-     */
-    @PostMapping("/add")
-    public ApiResp add(@RequestBody @Valid UserSaveParam param) throws Exception {
+    @Override
+    public ApiResp add(UserSaveParam param) throws Exception {
         return userService.add(param);
     }
 
-    /**
-     * 编辑用户信息
-     * @param param
-     * @return
-     * @throws Exception
-     */
-    @PostMapping("/edit")
-    public ApiResp edit(@RequestBody @Valid UserSaveParam param) throws Exception {
+    @Override
+    public ApiResp edit(UserSaveParam param) throws Exception {
         return userService.edit(param);
     }
 
-    /**
-     * 删除用户信息
-     * @param param
-     * @return
-     * @throws Exception
-     */
-    @PostMapping("/delete")
-    public ApiResp delete(@RequestBody @Valid UserDelParam param) throws Exception {
+    @Override
+    public ApiResp delete(UserDelParam param) throws Exception {
         return userService.delete(param);
     }
 
-    /**
-     * 修改用户密码
-     * @param param
-     * @return
-     * @throws Exception
-     */
-    @PostMapping("/updatePassword")
-    public ApiResp updatePassword(@RequestBody @Valid UserUpdatePwdParam param) throws Exception {
+    @Override
+    public ApiResp updatePassword(UserUpdatePwdParam param) throws Exception {
         return userService.updatePassword(param);
     }
-
 }

@@ -22,6 +22,13 @@
             <version>1.0.0</version>
         </dependency>
 
+        <!-- blog-server -->
+        <dependency>
+            <groupId>com.cy</groupId>
+            <artifactId>downstream-model</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
         <!--SpringBoot-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

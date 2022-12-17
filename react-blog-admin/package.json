@@ -28,6 +28,7 @@
     "js-md5": "^0.7.3",
     "mockjs": "^1.1.0",
     "nanoid": "^4.0.0",
+    "jwt-decode": "^2.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^11.17.3",
