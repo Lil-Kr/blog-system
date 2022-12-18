@@ -18,7 +18,7 @@
         <!--继承common依赖-->
         <dependency>
             <groupId>com.cy</groupId>
-            <artifactId>common</artifactId>
+            <artifactId>common-tools</artifactId>
             <version>1.0.0</version>
         </dependency>
 
@@ -37,11 +37,17 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- spring-boot-security -->
-        <!--<dependency>
+        <!-- spring-boot-webflux -->
+        <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>-->
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+
+        <!-- spring-boot-configuration-processor -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+        </dependency>
 
         <!--spring cloud alibaba-->
         <!--nacos 服务注册与发现 -->

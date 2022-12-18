@@ -1,11 +1,11 @@
 package com.cy.user.restapi;
 
-import com.cy.downstream.model.userserver.api.UserServerApi;
-import com.cy.downstream.model.userserver.pojo.entity.User;
-import com.cy.downstream.model.userserver.pojo.param.UserDelParam;
-import com.cy.downstream.model.userserver.pojo.param.UserListPageParam;
-import com.cy.downstream.model.userserver.pojo.param.UserSaveParam;
-import com.cy.downstream.model.userserver.pojo.param.UserUpdatePwdParam;
+import com.cy.common.model.userserver.api.UserServerApi;
+import com.cy.common.model.userserver.pojo.entity.User;
+import com.cy.common.model.userserver.pojo.param.UserDelParam;
+import com.cy.common.model.userserver.pojo.param.UserListPageParam;
+import com.cy.common.model.userserver.pojo.param.UserSaveParam;
+import com.cy.common.model.userserver.pojo.param.UserUpdatePwdParam;
 import com.cy.common.utils.apiUtil.ApiResp;
 import com.cy.user.servic.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +29,16 @@ public class UserApi implements UserServerApi {
     @Override
     public ApiResp userInfo(String loginAccount, String password) throws Exception {
         User user = userService.findByLoginAccountAndPwd(loginAccount, password);
+        if (Objects.isNull(user)) {
+            return ApiResp.error("用户不存在");
+        }else {
+            return ApiResp.success(user);
+        }
+    }
+
+    @Override
+    public ApiResp userInfo(String loginAccount) throws Exception {
+        User user = userService.findByLoginAccount(loginAccount);
         if (Objects.isNull(user)) {
             return ApiResp.error("用户不存在");
         }else {

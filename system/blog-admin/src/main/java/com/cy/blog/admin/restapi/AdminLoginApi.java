@@ -2,7 +2,7 @@ package com.cy.blog.admin.restapi;
 
 import com.cy.blog.admin.service.LoginService;
 import com.cy.common.utils.apiUtil.ApiResp;
-import com.cy.downstream.model.userserver.pojo.param.AdminLoginParam;
+import com.cy.common.model.userserver.pojo.param.AdminLoginParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

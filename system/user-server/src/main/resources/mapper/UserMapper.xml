@@ -3,7 +3,7 @@
 <mapper namespace="com.cy.user.dao.UserMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.cy.downstream.model.userserver.pojo.entity.User">
+    <resultMap id="BaseResultMap" type="com.cy.common.model.userserver.pojo.entity.User">
         <id column="id" property="id" />
         <result column="surrogate_id" property="surrogateId" />
         <result column="number" property="number" />
@@ -21,7 +21,7 @@
     </resultMap>
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="SysUserVoResultMap" type="com.cy.downstream.model.userserver.pojo.vo.UserVo">
+    <resultMap id="SysUserVoResultMap" type="com.cy.common.model.userserver.pojo.vo.UserVo">
         <id column="id" property="id" />
         <result column="surrogate_id" property="surrogateId" />
         <result column="number" property="number" />

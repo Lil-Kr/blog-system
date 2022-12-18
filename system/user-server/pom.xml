@@ -18,14 +18,14 @@
         <!--继承common依赖-->
         <dependency>
             <groupId>com.cy</groupId>
-            <artifactId>common</artifactId>
+            <artifactId>common-tools</artifactId>
             <version>1.0.0</version>
         </dependency>
 
-        <!-- blog-server -->
+        <!-- common-model -->
         <dependency>
             <groupId>com.cy</groupId>
-            <artifactId>downstream-model</artifactId>
+            <artifactId>common-model</artifactId>
             <version>1.0.0</version>
         </dependency>
 

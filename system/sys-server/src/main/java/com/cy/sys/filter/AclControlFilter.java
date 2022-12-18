@@ -1,6 +1,6 @@
 package com.cy.sys.filter;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSON;
 import com.cy.sys.common.holder.ApplicationContextHelper;
 import com.cy.sys.common.holder.RequestHolder;
 import com.cy.sys.pojo.entity.SysUser;
@@ -56,7 +56,7 @@ public class AclControlFilter implements Filter{
         SysUser user = RequestHolder.getCurrentUser();
         if (Objects.isNull(user)) {
             // 记录日志
-            log.info("Someone visit {}, but no login, parameter:{}",servletPath, JSONObject.toJSON(parameterMap));
+            log.info("Someone visit {}, but no login, parameter:{}",servletPath, JSON.toJSONString(parameterMap));
             // 当没有权限访问时
             noAuth(request, response);
             return;

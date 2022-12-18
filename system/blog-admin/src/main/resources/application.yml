@@ -21,7 +21,7 @@ ribbon:
   ReadTimeout: 5000 # 请求连接的超时时间
   ConnectionTimeout: 10000 # 请求处理的超时时间
 
-## open feign config
+## open feign authconfig
 feign:
   client:
     config:

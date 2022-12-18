@@ -1,9 +1,9 @@
 package com.cy.auth.config;
 
-import com.alibaba.fastjson.JSONObject;
-import com.cy.common.utils.apiUtil.ApiResp;
+import com.alibaba.fastjson2.JSON;
 import com.cy.auth.common.constant.InterceptorName;
 import com.cy.auth.common.holder.RequestHolder;
+import com.cy.common.utils.apiUtil.ApiResp;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -32,7 +32,7 @@ public class ApiInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object object) throws Exception {
         String url = request.getRequestURI();
         Map<String, String[]> parameterMap = request.getParameterMap();
-        log.info("request start. url={}, params={}",url, JSONObject.toJSON(parameterMap));
+        log.info("request start. url={}, params={}",url, JSON.toJSONString(parameterMap));
         long start = System.currentTimeMillis();
         request.setAttribute(InterceptorName.startTime,start);
         return true;

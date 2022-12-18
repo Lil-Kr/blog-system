@@ -3,7 +3,7 @@ package com.cy.blog.admin.service.Impl;
 import com.cy.blog.admin.feignclient.UserServiceFeignClient;
 import com.cy.blog.admin.service.LoginService;
 import com.cy.common.utils.apiUtil.ApiResp;
-import com.cy.downstream.model.userserver.pojo.param.AdminLoginParam;
+import com.cy.common.model.userserver.pojo.param.AdminLoginParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

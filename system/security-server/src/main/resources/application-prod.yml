@@ -6,7 +6,7 @@ spring:
     username: root
     password: 123456
   cloud:
-    ## nacos config
+    ## nacos authconfig
     nacos:
       discovery:
         server-addr: http://192.168.88.100:8848
@@ -20,7 +20,7 @@ spring:
         share-data-ids: ${spring.application.name}-${spring.profiles.active}
         server-addr: http://192.168.88.100:8848
         namespace: public
-    ## gateway config
+    ## gateway authconfig
     gateway:
       discovery:
         locator:

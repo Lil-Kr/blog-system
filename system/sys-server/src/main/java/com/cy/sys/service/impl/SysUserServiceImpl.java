@@ -1,7 +1,7 @@
 package com.cy.sys.service.impl;
 
 import cn.hutool.crypto.SecureUtil;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -210,7 +210,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         if (update >= 1) {
             return ApiResp.success("删除用户成功");
         }else {
-            return ApiResp.error("删除用户失败", JSONObject.toJSONString(param));
+            return ApiResp.error("删除用户失败", JSON.toJSONString(param));
         }
     }
 

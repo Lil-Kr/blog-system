@@ -18,7 +18,13 @@
         <!--继承common依赖-->
         <dependency>
             <groupId>com.cy</groupId>
-            <artifactId>common</artifactId>
+            <artifactId>common-tools</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.cy</groupId>
+            <artifactId>common-model</artifactId>
             <version>1.0.0</version>
         </dependency>
 
@@ -48,6 +54,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
+
+        <!-- spring-boot-starter-data-redis -->
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>-->
 
         <!--spring cloud alibaba-->
         <!--nacos 服务注册与发现 -->

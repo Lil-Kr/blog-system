@@ -18,7 +18,7 @@
         <!--继承common依赖-->
         <dependency>
             <groupId>com.cy</groupId>
-            <artifactId>common</artifactId>
+            <artifactId>common-tools</artifactId>
             <version>1.0.0</version>
         </dependency>
 
@@ -102,7 +102,6 @@
         </dependency>
         <!--参数校验 end-->
 
-
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
@@ -110,8 +109,8 @@
 
         <!--fastjson-->
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
+            <groupId>com.alibaba.fastjson2</groupId>
+            <artifactId>fastjson2</artifactId>
         </dependency>
 
         <!--junit-->

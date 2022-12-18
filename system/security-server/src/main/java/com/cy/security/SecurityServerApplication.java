@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 
 /**
@@ -14,6 +15,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 @Slf4j
 @SpringBootApplication
 @EnableDiscoveryClient
+@EnableFeignClients("com.cy.security.feignclient")
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityServerApplication {
 

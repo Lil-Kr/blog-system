@@ -1,6 +1,6 @@
 package com.cy.blog.admin.feignclient;
 
-import com.cy.downstream.model.userserver.api.UserServerApi;
+import com.cy.common.model.userserver.api.UserServerApi;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;
 

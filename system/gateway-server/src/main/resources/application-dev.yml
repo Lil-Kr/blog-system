@@ -6,7 +6,7 @@ spring:
     username: root
     password: 123456
   cloud:
-    ## nacos config
+    ## nacos authconfig
     nacos:
       discovery:
         server-addr: http://192.168.88.100:8848
@@ -20,7 +20,7 @@ spring:
         share-data-ids: ${spring.application.name}-${spring.profiles.active}
         server-addr: http://192.168.88.100:8848
         namespace: public
-    ## gateway config
+    ## gateway authconfig
     gateway:
 #      globalcors:
 #        cors-configurations:
@@ -41,7 +41,7 @@ spring:
       # 配置路由规则
       routes:
         ## 需要路由到的 server name
-        - id: blog-admin-01
+        - id: blog-admin
           # 采用 LoadBalanceClient 方式请求, 以 lb:// 开头, 后面的是注册在 Nacos 上的服务名
           uri: lb://blog-admin-01
           # Predicate 翻译过来是"谓词"的意思，必须配置这个属性，主要作用是匹配用户的请求，有很多种用法
@@ -52,10 +52,16 @@ spring:
             ## 此处配置去掉 1 个路径前缀，再配置上面的 Path=/restapi/**，就能按照 http://localhost:8888/api/** 的方式访问了
             ## 将 /blog-admin/**  重写为/**, 将第一个路径去掉(去掉blog-admin)
             - StripPrefix=1
-        - id: blog-web-01
+        - id: blog-web
           uri: lb://blog-web-01
           predicates:
             - Path=/blog-web/**
+          filters:
+            - StripPrefix=1
+        - id: security-server
+          uri: lb://security-server-01
+          predicates:
+            - Path=/admin-login/**
           filters:
             - StripPrefix=1
   config:
@@ -66,7 +72,7 @@ gateway-config:
   url:
     skip-urls:
       - /blog-admin/admin/**
-
+      - /admin-login/admin/**
 
 ## gateway endpoint
 management:

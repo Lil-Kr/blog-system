@@ -1,25 +1,25 @@
 package com.cy.auth.service.impl;
 
 import cn.hutool.crypto.SecureUtil;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.cy.auth.dao.UserMapper;
-import com.cy.auth.pojo.vo.user.UserVo;
-import com.cy.common.utils.apiUtil.ApiResp;
-import com.cy.common.utils.dateUtil.DateUtil;
-import com.cy.common.utils.keyUtil.IdWorker;
 import com.cy.auth.common.constant.InterceptorName;
 import com.cy.auth.common.constant.UserInfoConst;
+import com.cy.auth.dao.UserMapper;
 import com.cy.auth.pojo.entity.User;
 import com.cy.auth.pojo.param.user.UserDelParam;
 import com.cy.auth.pojo.param.user.UserListPageParam;
 import com.cy.auth.pojo.param.user.UserSaveParam;
 import com.cy.auth.pojo.param.user.UserUpdatePwdParam;
+import com.cy.auth.pojo.vo.user.UserVo;
 import com.cy.auth.service.UserService;
+import com.cy.common.utils.apiUtil.ApiResp;
+import com.cy.common.utils.dateUtil.DateUtil;
+import com.cy.common.utils.keyUtil.IdWorker;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
@@ -210,7 +210,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         if (update >= 1) {
             return ApiResp.success("删除用户成功");
         }else {
-            return ApiResp.error("删除用户失败", JSONObject.toJSONString(param));
+            return ApiResp.error("删除用户失败", JSON.toJSONString(param));
         }
     }
 

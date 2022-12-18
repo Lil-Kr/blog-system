@@ -17,8 +17,8 @@
 
     <!-- 引入子模块名 -->
     <modules>
-        <module>common</module>
-        <module>downstream-model</module>
+        <module>common-tools</module>
+        <module>common-model</module>
         <module>gateway-server</module>
         <module>nacos-server</module>
         <module>blog-admin</module>
@@ -182,7 +182,6 @@
                 <artifactId>spring-cloud-starter-sleuth</artifactId>
                 <version>${spring-cloud-sleuth.version}</version>
             </dependency>
-
             <!--spring cloud alibaba end-->
 
             <!--spring boot start-->
@@ -241,6 +240,14 @@
                 <artifactId>spring-boot-starter-test</artifactId>
                 <version>${spring-boot.version}</version>
             </dependency>
+
+            <!-- spring-boot-starter-data-redis -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+
             <!--spring boot end-->
 
             <!--mybatis plus-->
@@ -282,7 +289,7 @@
                 <version>${mysql.version}</version>
             </dependency>
 
-            <!--Redis-->
+            <!--Redis clients -->
             <dependency>
                 <groupId>redis.clients</groupId>
                 <artifactId>jedis</artifactId>
@@ -316,13 +323,6 @@
                 <groupId>com.google.code.gson</groupId>
                 <artifactId>gson</artifactId>
                 <version>${gson.version}</version>
-            </dependency>
-
-            <!-- fastjson -->
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>fastjson</artifactId>
-                <version>${fastjson.version}</version>
             </dependency>
 
             <!-- fastjson2 -->
