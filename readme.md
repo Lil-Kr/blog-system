@@ -75,7 +75,7 @@ ElasticSearch | xxx | xxx
  nacos-client | 8020 | 服务注册发现, 配置中心 | 1
  blog-admin | 8030 | 对外提供后台管理的所有api | 1
  blog-web | 8040 | 对外提供web端的所有api | 1
- auth-server | 8050 | 权限服务 | 1
+ security-server | 8050 | 权限服务 | 1
  user-server | 8060 | 用户服务 | 1
  blog-server | 8070 | 博客服务 | 1
  picture-server | 8081 | 图片服务 | 1
