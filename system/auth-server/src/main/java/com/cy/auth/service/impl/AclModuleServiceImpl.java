@@ -2,9 +2,6 @@ package com.cy.auth.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.cy.common.utils.apiUtil.ApiResp;
-import com.cy.common.utils.dateUtil.DateUtil;
-import com.cy.common.utils.keyUtil.IdWorker;
 import com.cy.auth.common.holder.RequestHolder;
 import com.cy.auth.dao.AclModuleMapper;
 import com.cy.auth.pojo.dto.aclmodule.AclModuleDto;
@@ -13,9 +10,12 @@ import com.cy.auth.pojo.param.aclmodule.AclModuleDelParam;
 import com.cy.auth.pojo.param.aclmodule.AclModuleParam;
 import com.cy.auth.service.AclModuleService;
 import com.cy.auth.util.org.LevelUtil;
+import com.cy.common.utils.apiUtil.ApiResp;
+import com.cy.common.utils.dateUtil.DateUtil;
+import com.cy.common.utils.keyUtil.IdWorker;
 import com.google.common.base.Preconditions;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

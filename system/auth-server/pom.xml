@@ -53,7 +53,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
         </dependency>
 
         <!-- sfl4j日志 -->
@@ -95,11 +94,11 @@
             <artifactId>fastjson2</artifactId>
         </dependency>
 
-        <!--junit-->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
         </dependency>
+
     </dependencies>
 
     <build>

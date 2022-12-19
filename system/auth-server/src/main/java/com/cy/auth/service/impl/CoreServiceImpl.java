@@ -8,9 +8,8 @@ import com.cy.auth.pojo.entity.Role;
 import com.cy.auth.service.CoreService;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.collections.CollectionUtils;
 import org.springframework.stereotype.Service;
-
+import org.apache.commons.collections4.CollectionUtils;
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Optional;

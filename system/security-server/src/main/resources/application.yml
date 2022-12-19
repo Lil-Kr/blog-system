@@ -6,15 +6,12 @@ server:
 
 spring:
   application:
-    name: security-server-01
+    name: sys-server-01
   profiles:
-    active: dev
+    active: uat
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     default-property-inclusion: non_null
     time-zone: GMT-8
     serialization:
       WRITE_DATES_AS_TIMESTAMPS: false
-    property-naming-strategy: SNAKE_CASE
-  main:
-    web-application-type: reactive

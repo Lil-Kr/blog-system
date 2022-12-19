@@ -13,7 +13,7 @@ import java.util.List;
  */
 @Component
 @Data
-@ConfigurationProperties("gateway-config.url")
+@ConfigurationProperties("gateway-authconfig.url")
 public class SkipAuthUrlProperties {
 
     private List<String> skipUrls;

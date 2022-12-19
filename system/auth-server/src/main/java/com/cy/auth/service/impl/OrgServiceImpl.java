@@ -19,10 +19,9 @@ import com.cy.auth.service.OrgService;
 import com.cy.auth.util.org.LevelUtil;
 import com.cy.auth.util.org.OrgUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.collections.CollectionUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+import org.apache.commons.collections4.CollectionUtils;
 import javax.annotation.Resource;
 import java.util.Collections;
 import java.util.List;

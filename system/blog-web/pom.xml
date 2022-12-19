@@ -15,18 +15,14 @@
     <packaging>jar</packaging>
 
     <dependencies>
-        <!--继承common依赖-->
+        <!--继承common-model依赖-->
         <dependency>
             <groupId>com.cy</groupId>
-            <artifactId>common-tools</artifactId>
+            <artifactId>common-model</artifactId>
             <version>1.0.0</version>
         </dependency>
 
         <!--SpringBoot-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -66,7 +62,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
         </dependency>
 
         <!-- sfl4j日志 -->
@@ -100,12 +95,6 @@
         <dependency>
             <groupId>com.alibaba.fastjson2</groupId>
             <artifactId>fastjson2</artifactId>
-        </dependency>
-
-        <!--junit-->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
         </dependency>
 
         <dependency>

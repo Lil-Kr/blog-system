@@ -17,7 +17,7 @@ import com.cy.sys.pojo.vo.role.SysRoleVo;
 import com.cy.sys.service.ISysRoleService;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

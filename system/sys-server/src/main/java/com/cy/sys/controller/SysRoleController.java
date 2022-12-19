@@ -12,7 +12,7 @@ import com.cy.sys.service.ISysRoleService;
 import com.cy.sys.service.ISysRoleUserService;
 import com.cy.sys.service.impl.SysTreeService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
