@@ -14,7 +14,7 @@
     <version>1.0.0</version>
 
     <dependencies>
-        <!--继承common依赖-->
+        <!--继承 common-tools 依赖-->
         <dependency>
             <groupId>com.cy</groupId>
             <artifactId>common-tools</artifactId>
