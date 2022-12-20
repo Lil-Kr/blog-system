@@ -8,5 +8,6 @@ import lombok.ToString;
 @Data
 @ToString
 @JsonInclude(JsonInclude.Include.NON_NULL)
+//@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class UserVo extends User {
 }

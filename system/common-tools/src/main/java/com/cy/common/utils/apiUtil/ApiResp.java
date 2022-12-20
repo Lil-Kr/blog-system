@@ -28,8 +28,9 @@ public final class ApiResp<T> {
     /** 成功编码 */
     public static final int CODE_SUCCESS = 0;
 
-    /**状态码*/
-    private int stateCode;
+//    /**状态码*/
+//    @JsonProperty(value = "state_code")
+//    private int stateCode;
 
     /**响应码*/
     private int code;
@@ -116,6 +117,10 @@ public final class ApiResp<T> {
      */
     public static ApiResp error(String msg) {
         return create(CODE_ERROR,msg, null);
+    }
+
+    public static ApiResp error(int code, String msg) {
+        return create(code,msg, null);
     }
 
     /**

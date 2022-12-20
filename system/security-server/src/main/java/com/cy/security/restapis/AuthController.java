@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     @GetMapping("test1")
-    public ResponseEntity<String> test1 () {
+    public ResponseEntity<String> test1 () throws Exception {
         return ResponseEntity.ok("auth-test1");
     }
 
     @PostMapping("login")
-    public ResponseEntity<String> login () {
+    public ResponseEntity<String> login () throws Exception {
         return ResponseEntity.ok("auth-login");
     }
 }

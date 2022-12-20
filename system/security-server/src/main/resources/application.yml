@@ -8,10 +8,20 @@ spring:
   application:
     name: sys-server-01
   profiles:
-    active: uat
+    active: dev
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     default-property-inclusion: non_null
     time-zone: GMT-8
     serialization:
       WRITE_DATES_AS_TIMESTAMPS: false
+
+## 该security-server所需要的系统配置
+security-config:
+  ## 配置需要拦截的url
+  filter-request-urls:
+    - /admin/login
+    - /admin/logout
+    - /web/login
+    - /web/logout
+
