@@ -18,7 +18,7 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
+import java.util.Base64;
 
 /**
  * @Author: Lil-K
@@ -49,7 +49,7 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
             /**
              * 返回错误提示, 并且转为 转为 bytes
              */
-            ApiResp apiResp = ApiResp.errorToken(ApiResp.CODE_ERROR_TOKEN, "token can not be blank");
+            ApiResp apiResp = ApiResp.errorToken(ApiResp.MSG_ERROR, "token can not be blank");
             byte[] bytes = JSON.toJSONString(apiResp).getBytes(StandardCharsets.UTF_8);
             DataBuffer buffer = response.bufferFactory().wrap(bytes);
             return response.writeWith(Mono.just(buffer));
@@ -86,14 +86,17 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
     }
 
     public static void main(String[] args) {
-        String requestUrl = "/blog-admin/admin/login";
-        String skipPath = "/blog-admin/admin/**";
-        boolean matches = PathUtil.matches(Arrays.asList(skipPath), requestUrl);
-        boolean matche = PathUtil.matche(skipPath, requestUrl);
-        System.out.println(matche);
-        System.out.println(matches);
+//        String requestUrl = "/blog-admin/admin/login";
+//        String skipPath = "/blog-admin/admin/**";
+//        boolean matches = PathUtil.matches(Arrays.asList(skipPath), requestUrl);
+//        boolean matche = PathUtil.matche(skipPath, requestUrl);
+//        System.out.println(matche);
+//        System.out.println(matches);
 //        PathMatcher pathMatcher = new AntPathMatcher();
 //        boolean match = pathMatcher.match(skipPath, requestUrl);
 //        System.out.println(match);
+        String a = "Y3kyOmUxMGFkYzM5NDliYTU5YWJiZTU2ZTA1N2YyMGY4ODNl";
+        byte[] b = Base64.getDecoder().decode("Y3kyOmUxMGFkYzM5NDliYTU5YWJiZTU2ZTA1N2YyMGY4ODNl");
+        System.out.println(new String(b));
     }
 }

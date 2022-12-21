@@ -21,6 +21,7 @@ public class Constants {
     public static final String CONTENT_TYPE = "application/json";
 
     public static final String HEADER_ACCESS_TOKEN_KEY = "access-token";
+    public static final String HEADER_TOKEN_KEY = "token";
     public static final String PARSED_BODY_KEY = "PARSED_BODY";
 
     /**

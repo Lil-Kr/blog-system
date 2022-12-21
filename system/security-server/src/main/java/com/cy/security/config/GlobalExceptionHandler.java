@@ -4,13 +4,16 @@ import com.cy.common.utils.apiUtil.ApiResp;
 import com.cy.security.config.exception.ApiException;
 import com.google.common.collect.Maps;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -80,7 +83,15 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(Exception.class)
     @ResponseBody
+//    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ApiResp defaultExceptionHandler(HttpServletRequest req, HttpServletResponse resp, Exception e) throws Exception {
+        e.printStackTrace();
+        return ApiResp.error(resp.getStatus(), e.getMessage());
+    }
+
+    @ExceptionHandler(UsernameNotFoundException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ApiResp handleGlobalExceptionHandler(HttpServletRequest req, HttpServletResponse resp, UsernameNotFoundException e) throws Exception {
         e.printStackTrace();
         return ApiResp.error(resp.getStatus(), e.getMessage());
     }

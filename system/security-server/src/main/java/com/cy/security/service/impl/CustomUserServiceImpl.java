@@ -1,11 +1,17 @@
 package com.cy.security.service.impl;
 
 import com.cy.common.model.userserver.pojo.entity.User;
+import com.cy.security.feignclient.UserServiceFeignClient;
 import com.cy.security.pojo.entity.UserInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,11 +21,15 @@ import java.util.List;
  * @Date: 2022/12/20
  * @Description:
  */
-//@Service
+@Service
 public class CustomUserServiceImpl implements UserDetailsService {
 
     private static String loginAccount = "cy";
     private static String password = "e10adc3949ba59abbe56e057f20f883e";
+
+    @Autowired
+    private UserServiceFeignClient userServiceFeignClient;
+
 
     /**
      * 这里根据传进来的用户账号进行用户信息的构建
@@ -42,8 +52,14 @@ public class CustomUserServiceImpl implements UserDetailsService {
          * todo:
          * 模拟数据库中存在这个用户
          */
+//        ApiResp resp = userServiceFeignClient.userInfo(loginAccount);
+//        if (Objects.isNull(resp) || Objects.isNull(resp.getData())) {
+//            throw new UsernameNotFoundException("account or password error");
+//        }
+//        User userInfo = (User)resp.getData();
+
         if (!this.loginAccount.equals(loginAccount)) {
-            throw new RuntimeException("account or password error");
+            throw new UsernameNotFoundException("account or password error");
         }
         User userInfo = User.builder().id(1l).loginAccount(loginAccount).password(this.password).userName("陈羽").build();
 
@@ -51,9 +67,11 @@ public class CustomUserServiceImpl implements UserDetailsService {
          * todo:
          * 模拟当前用户所拥有的权限
          */
-//        SimpleGrantedAuthority authority = new SimpleGrantedAuthority("超级管理员");
-        List<GrantedAuthority> authorities =new ArrayList<>();
-//        authorities.add(authority);
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority("超级管理员");
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(authority);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
 
         return new UserInfo(userInfo, authorities);
     }

@@ -1,6 +1,5 @@
 package com.cy.security.authconfig;
 
-import com.cy.security.service.impl.CustomUserServiceImpl;
 import com.cy.security.utils.secret.MD5Encoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -9,7 +8,6 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -34,25 +32,36 @@ public class SecurityConfig {
 //    @Qualifier("customLoginAdminAuthFilter")
 //    private CustomLoginAdminAuthFilter customLoginAdminAuthFilter;
 
+//    @Autowired
+//    @Qualifier("loginAdminFilter")
+//    private LoginAdminFilter loginAdminFilter;
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new MD5Encoder();
     }
 
-    @Bean
-    public UserDetailsService customUserService() {
-        return new CustomUserServiceImpl();
-    }
-
-//    @Bean
-//    public UserDetailsService githubUserService() {
-//        return new GithubUserServiceImpl();
-//    }
-
+    /**
+     * 配置全局的AuthenticationManager
+     * @param authenticationConfiguration
+     * @return
+     * @throws Exception
+     */
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
+
+//    LoginAdminFilter loginFilter(AuthenticationManager authenticationManager) throws Exception {
+//        LoginAdminFilter loginFilter = new LoginAdminFilter(authenticationManager);
+//        loginFilter.setFilterProcessesUrl("/login");
+//        loginFilter.setUsernameParameter("username");
+//        loginFilter.setPasswordParameter("password");
+////        loginFilter.setAuthenticationManager();
+//        loginFilter.setAuthenticationSuccessHandler(new MyAuthenticationSuccessHandler());
+//        loginFilter.setAuthenticationFailureHandler(new MyAuthenticationFailureHandler());
+//        return loginFilter;
+//    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -71,6 +80,7 @@ public class SecurityConfig {
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
+//                .addFilterBefore(loginAdminFilter, UsernamePasswordAuthenticationFilter.class)
 //                .addFilterBefore(customLoginAdminAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .httpBasic();
 

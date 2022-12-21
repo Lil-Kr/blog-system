@@ -22,9 +22,9 @@ public interface UserService extends IService<User> {
 
     ApiResp add(UserSaveParam param) throws Exception;
 
-    User findByLoginAccount(String LoginAccount) throws Exception;
+    ApiResp findByLoginAccount(String LoginAccount) throws Exception;
 
-    User findByLoginAccountAndPwd(String LoginAccount,String password) throws Exception;
+    ApiResp findByLoginAccountAndPwd(String LoginAccount,String password) throws Exception;
 
     ApiResp delete(UserDelParam param) throws Exception;
 
@@ -33,6 +33,5 @@ public interface UserService extends IService<User> {
     ApiResp listAll() throws Exception;
 
     ApiResp updatePassword(UserUpdatePwdParam param) throws Exception;
-
 
 }

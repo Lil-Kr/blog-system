@@ -6,7 +6,7 @@ server:
 
 spring:
   application:
-    name: sys-server-01
+    name: security-server-01
   profiles:
     active: dev
   jackson:
@@ -15,6 +15,23 @@ spring:
     time-zone: GMT-8
     serialization:
       WRITE_DATES_AS_TIMESTAMPS: false
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://192.168.88.100:8848
+        username: nacos
+        password: nacos
+        group: DEFAULT_GROUP
+        service: ${spring.application.name}
+        register-enabled: true
+      config:
+        group: DEFAULT_GROUP
+        share-data-ids: ${spring.application.name}-${spring.profiles.active}
+        server-addr: http://192.168.88.100:8848
+        namespace: public
+  config:
+    import: nacos:application-dev.yml
+
 
 ## 该security-server所需要的系统配置
 security-config:

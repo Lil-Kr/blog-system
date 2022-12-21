@@ -1,5 +1,7 @@
 package com.cy.common.utils.jwtUtil;
 
+import com.alibaba.fastjson2.JSON;
+import com.alibaba.fastjson2.JSONObject;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -8,6 +10,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.cy.common.utils.apiUtil.ApiResp;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.joda.time.DateTime;
 
 import java.util.*;
 
@@ -37,7 +40,7 @@ public class JwtTokenUtil {
     /**
      * 算法
      */
-    private static final Algorithm ALGORITHM = Algorithm.HMAC256(JwtTokenUtil.SECRET_KEY);
+    private static final Algorithm ALGORITHM = Algorithm.HMAC256(SECRET_KEY);
 
     /**
      * Header
@@ -55,17 +58,37 @@ public class JwtTokenUtil {
     private static Calendar calendar = new GregorianCalendar();
 
     /**
+     * 默认时间
+     * 120 分钟过期
+     */
+    private static final int DEFAULT_EXPIRE_DATE = 2 * 60;
+    private static final int DEFAULT_EXPIRE_OFFSET = 2;
+
+    /**
+     * 默认 token generator
+     * @param payload
+     * @return
+     */
+    public static String generatorJwtToken (Map<String,Object> payload) {
+        return generatorJwtToken(DateTime.now(), DEFAULT_EXPIRE_DATE, payload);
+    }
+
+    /**
+     * 自定义过期时间
+     * @param expireTime
+     * @param payload
+     * @return
+     */
+    public static String generatorJwtToken (int expireTime, Map<String,Object> payload) {
+        return generatorJwtToken(DateTime.now(), expireTime, payload);
+    }
+
+    /**
      * generatorJwtToken
      * @return
      */
-    public static String generatorJwtToken(Map<String,Object> payload) {
-        Date nowDate = new Date();
-        /**
-         * 120 分钟过期
-         */
-        Date expireDate = JwtTokenUtil.AddDate(nowDate, 2 * 60);
+    public static String generatorJwtToken(DateTime nowDateTime, int expireTime, Map<String,Object> payload) {
         JWTCreator.Builder tokenBuilder = JWT.create();
-
         /**
          * token
          * 格式: head.payload.singurater
@@ -79,66 +102,97 @@ public class JwtTokenUtil {
          */
         String token = tokenBuilder
                 //Header 部分
-                .withHeader(JwtTokenUtil.HEADER_MAP)
+                .withHeader(HEADER_MAP)
                 // payload, 一般存储前端带过来的用户信息
-                .withClaim("payload",payload)
+                .withClaim("payload", payload)
                 //issuer jwt 签发主体
-                .withIssuer(JwtTokenUtil.ISSUER)
+                .withIssuer(ISSUER)
                 //audience
-                .withAudience(JwtTokenUtil.AUDIENCE)
-                //isa 签发时间(生效时间)
-                .withIssuedAt(nowDate)
+                .withAudience(AUDIENCE)
+                .withIssuedAt(nowDateTime.toDate())
                 //eat 过期时间
-                .withExpiresAt(expireDate)
-//                .withExpiresAt(DateTime.now().plusMillis(4000).toDate())
+                .withExpiresAt(nowDateTime.plusMinutes(expireTime).toDate())
                 //签名, 算法加密
-                .sign(JwtTokenUtil.ALGORITHM);
+                .sign(ALGORITHM);
         return token;
     }
 
-//    public static void main(String[] args) throws InterruptedException {
-//        String token = generatorJwtToken();
-//        System.out.println(token);
-//        Thread.sleep(3000);
-//        validateToken(token);
-//    }
-
     /**
-     *
+     * 校验token
      * @param token
      * @return
      */
     public static ApiResp validateToken(String token) {
         if (StringUtils.isBlank(token)) {
-            new Exception("access_token 不能为空");
+            return ApiResp.failure("token can not be empty or null");
         }
 
         try {
-            DecodedJWT decodedJWT = JWT.require(JwtTokenUtil.ALGORITHM).build().verify(token);
-            String name = decodedJWT.getClaim("user_name").asString();
-            return ApiResp.success("token 验证成功",name);
+            JWT.require(ALGORITHM).build().verify(token);
+            return ApiResp.success("token is validate success");
         } catch (TokenExpiredException e){
-            return ApiResp.errorToken(ApiResp.CODE_ERROR_TOKEN_EXPIRED,"token 已经过期",e.getMessage());
+            return ApiResp.expirationTokenError("token was expired", e.getMessage());
         } catch (Exception e){
-            return ApiResp.errorToken(ApiResp.CODE_ERROR_TOKEN,"token 验证失败", e.getMessage());
+            return ApiResp.errorToken("token validate was failure", e.getMessage());
         }
     }
 
-    public static String get(String token, String key) {
-        List<String> list= JWT.decode(token).getAudience();
-        String userId = JWT.decode(token).getAudience().get(0);
-        return userId;
+    /**
+     * check token is or not expiration
+     * @param token
+     * @return true: is expiration, false not expiration
+     */
+    public static boolean isExpiration (String token) {
+        ApiResp resp = validateToken(token);
+        if (ApiResp.CODE_ERROR_TOKEN_EXPIRED == resp.getCode()) {// token过期
+            return true;
+        }else {
+            return false;
+        }
     }
 
     /**
-     * 设置token时间长度, 校验是否过期
-     * @param date
-     * @param minute
+     * 续签token, 当token 将要过期时(还没过期)
      * @return
      */
-    private static Date AddDate(Date date, Integer minute) {
-        calendar.setTime(date);
-        calendar.add(Calendar.MINUTE, minute);
-        return calendar.getTime();
+    public static ApiResp renewToken(String token) {
+        ApiResp resp = validateToken(token);
+        if (resp.getCode() != ApiResp.CODE_SUCCESS) {// token error
+            return ApiResp.errorToken("token validate was failure", resp.getMsg());
+        }
+
+        /**
+         * 判断token是否即将要过期
+         * jwt中的过期时间 - 当前时间 = 偏移量
+         */
+        // 获取过期时间
+        DecodedJWT decode = JWT.decode(token);
+        long expiresTime = decode.getExpiresAt().getTime();
+        long nowTime = new Date().getTime();
+        long diffMinutes = (expiresTime - nowTime) / (60 * 1000) % 60;
+        /**
+         * 当还剩2分钟过期, 续签
+         * todo: 待完善
+         */
+        if (diffMinutes <= DEFAULT_EXPIRE_OFFSET) {
+            String payloadJson = new String(Base64.getDecoder().decode(decode.getPayload()));
+            JSONObject jsonObject = JSON.parseObject(payloadJson);
+            Map<String,Object> payloadMap = (HashMap)jsonObject.get("payload");
+            String newToken = generatorJwtToken(payloadMap);
+            return ApiResp.success(ApiResp.MSG_RENEWAL_SUCCESS,newToken);
+        }
+        return null;
     }
+
+//    /**
+//     * 设置token时间长度, 校验是否过期
+//     * @param date
+//     * @param minute
+//     * @return
+//     */
+//    private static Date AddDate(Date date, Integer minute) {
+//        calendar.setTime(date);
+//        calendar.add(Calendar.MINUTE, minute);
+//        return calendar.getTime();
+//    }
 }

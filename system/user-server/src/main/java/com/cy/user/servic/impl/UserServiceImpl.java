@@ -48,7 +48,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
      * @throws Exception
      */
     @Override
-    public ApiResp listPage(UserListPageParam param) throws Exception {
+    public ApiResp<IPage> listPage(UserListPageParam param) throws Exception {
         Page<UserVo> page = new Page<>(param.getCurrent(), param.getSize());
         page.setCurrent(param.getCurrent());
         page.setSize(param.getSize());
@@ -62,7 +62,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
      * @throws Exception
      */
     @Override
-    public ApiResp listAll() throws Exception {
+    public ApiResp<List<User>> listAll() throws Exception {
         List<User> users = userMapper1.selectList(new QueryWrapper<>());
 
         if (CollectionUtils.isEmpty(users)) {
@@ -78,7 +78,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
      * @throws Exception
      */
     @Override
-    public ApiResp updatePassword(UserUpdatePwdParam param) throws Exception {
+    public ApiResp<String> updatePassword(UserUpdatePwdParam param) throws Exception {
 
         // 检查旧密码是否一致
         QueryWrapper<User> query1 = new QueryWrapper<>();
@@ -109,7 +109,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
      * @throws Exception
      */
     @Override
-    public ApiResp add(UserSaveParam param) throws Exception {
+    public ApiResp<String> add(UserSaveParam param) throws Exception {
 
         // 检查注册登录账号是否有相同的
         if (checkAccountExist(param.getLoginAccount(),param.getSurrogateId())) {
@@ -151,19 +151,20 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
      * @throws Exception
      */
     @Override
-    public User findByLoginAccount(String loginAccount) throws Exception {
+    public ApiResp<User> findByLoginAccount(String loginAccount) throws Exception {
         QueryWrapper<User> query1 = new QueryWrapper<>();
         query1.eq(InterceptorName.login_account, loginAccount);
         User user = userMapper1.selectOne(query1);
-        return user;
+        return checkUserExist(user);
     }
 
     @Override
-    public User findByLoginAccountAndPwd(String loginAccount,String password) throws Exception {
+    public ApiResp<User> findByLoginAccountAndPwd(String loginAccount,String password) throws Exception {
         QueryWrapper<User> query = new QueryWrapper<>();
         query.eq(InterceptorName.login_account, loginAccount);
         query.eq(InterceptorName.password, password);
-        return userMapper1.selectOne(query);
+        User user = userMapper1.selectOne(query);
+        return checkUserExist(user);
     }
 
     /**
@@ -173,7 +174,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
      * @throws Exception
      */
     @Override
-    public ApiResp edit(UserSaveParam param) throws Exception {
+    public ApiResp<String> edit(UserSaveParam param) throws Exception {
 
         // 检查手机号是否有相同的用户
         if (checkTelExist(param.getTelephone(),param.getSurrogateId())) {
@@ -206,7 +207,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
      * @throws Exception
      */
     @Override
-    public ApiResp delete(UserDelParam param) throws Exception {
+    public ApiResp<String> delete(UserDelParam param) throws Exception {
 
         User user = User.builder()
                 .deleted(1) // 删除状态
@@ -275,6 +276,17 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         }
     }
 
-
+    /**
+     * 检查用户是否存在
+     * @param user
+     * @return
+     */
+    private ApiResp<User> checkUserExist(User user) {
+        if (Objects.isNull(user)) {
+            return ApiResp.error("用户名或密码错误");
+        }else {
+            return ApiResp.success(user);
+        }
+    }
 
 }

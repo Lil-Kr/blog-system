@@ -1,5 +1,6 @@
 package com.cy.common.model.userserver.api;
 
+import com.cy.common.model.userserver.pojo.entity.User;
 import com.cy.common.utils.apiUtil.ApiResp;
 import com.cy.common.model.userserver.pojo.param.UserDelParam;
 import com.cy.common.model.userserver.pojo.param.UserListPageParam;
@@ -23,7 +24,7 @@ public interface UserServerApi {
     ApiResp userInfo(@PathVariable("loginAccount") String loginAccount, @PathVariable("password") String password) throws Exception;
 
     @GetMapping("/userInfo/{loginAccount}")
-    ApiResp userInfo(@PathVariable("loginAccount") String loginAccount) throws Exception;
+    ApiResp<User> userInfo(@PathVariable("loginAccount") String loginAccount) throws Exception;
 
     /**
      * 分页查询列表

@@ -7,6 +7,7 @@ import com.cy.security.config.properties.SecurityConfigProperties;
 import com.cy.security.utils.request.RequestUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
@@ -30,13 +31,14 @@ public class CustomLoginAdminAuthFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        request.getAuthType();
         response.setContentType("application/json;charset=utf-8");
         // 获取请求的url
         String requestURI = request.getRequestURI();
         // 获取body参数类型 -> application/json (body 通常为 json)
         String contentType = request.getContentType();
         if (securityConfigProperties.getFilterRequestUrls().contains(requestURI)
-                && Constants.CONTENT_TYPE.equals(contentType)) {
+                && MediaType.APPLICATION_JSON_VALUE.equals(contentType)) {
             Map<String, Object> bodyParametersFromRequest = RequestUtils.getBodyParametersFromRequest(request);
             String loginAccount = (String)bodyParametersFromRequest.get(Constants.LOGIN_ACCOUNT);
             String password = (String)bodyParametersFromRequest.get(Constants.PASSWORD);

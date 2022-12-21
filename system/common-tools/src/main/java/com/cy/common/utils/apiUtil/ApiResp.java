@@ -18,9 +18,11 @@ public final class ApiResp<T> {
     /**
      * token校验失败错误码
      */
-    public static final int CODE_ERROR_TOKEN = 401;
+    public static final int CODE_ERROR_TOKEN = 1000;
 
-    public static final int CODE_ERROR_TOKEN_EXPIRED = 403;
+    public static final int CODE_ERROR_TOKEN_EXPIRED = 1001;
+
+    public static final String MSG_RENEWAL_SUCCESS = "renewal success";
 
     /** 失败编码 */
     public static final int CODE_FAILURE = 1;
@@ -28,9 +30,11 @@ public final class ApiResp<T> {
     /** 成功编码 */
     public static final int CODE_SUCCESS = 0;
 
-//    /**状态码*/
-//    @JsonProperty(value = "state_code")
-//    private int stateCode;
+    public static final String MSG_SUCCESS = "SUCCESS";
+
+    public static final String MSG_ERROR = "ERROR";
+
+    public static final String MSG_FAILURE = "FAILURE";
 
     /**响应码*/
     private int code;
@@ -48,7 +52,10 @@ public final class ApiResp<T> {
      * @param data
      * @return
      */
-    public static ApiResp create(int code, String msg, Object data) {
+//    public static ApiResp create(int code, String msg, Object data) {
+//        return new ApiResp(code,msg,data);
+//    }
+    public static <T> ApiResp<T> create(int code, String msg, T data) {
         return new ApiResp(code,msg,data);
     }
 
@@ -57,7 +64,7 @@ public final class ApiResp<T> {
      * @param msg
      * @return
      */
-    public static ApiResp success(String msg) {
+    public static <T> ApiResp<T> success(String msg) {
         return create(CODE_SUCCESS,msg,null);
     }
 
@@ -66,8 +73,8 @@ public final class ApiResp<T> {
      * @param data
      * @return
      */
-    public static ApiResp success(Object data) {
-        return create(CODE_SUCCESS,"SUCCESS",data);
+    public static <T> ApiResp<T> success(T data) {
+        return create(CODE_SUCCESS,MSG_SUCCESS,data);
     }
 
     /**
@@ -76,7 +83,7 @@ public final class ApiResp<T> {
      * @param data
      * @return
      */
-    public static ApiResp success(String msg, Object data) {
+    public static <T> ApiResp<T> success(String msg, T data) {
         return create(CODE_SUCCESS,msg,data);
     }
 
@@ -86,7 +93,7 @@ public final class ApiResp<T> {
      * @param data
      * @return
      */
-    public static ApiResp failure(String msg, Object data) {
+    public static <T> ApiResp<T> failure(String msg, T data) {
         return create(CODE_FAILURE,msg,data);
     }
 
@@ -95,7 +102,7 @@ public final class ApiResp<T> {
      * @param msg
      * @return
      */
-    public static ApiResp failure(String msg) {
+    public static <T> ApiResp<T> failure(String msg) {
         return create(CODE_FAILURE,msg,null);
     }
 
@@ -106,7 +113,7 @@ public final class ApiResp<T> {
      * @param data
      * @return
      */
-    public static ApiResp error(String msg, Object data) {
+    public static <T> ApiResp<T> error(String msg, T data) {
         return create(CODE_ERROR,msg, data);
     }
 
@@ -115,26 +122,29 @@ public final class ApiResp<T> {
      * @param msg
      * @return
      */
-    public static ApiResp error(String msg) {
+    public static <T> ApiResp<T> error(String msg) {
         return create(CODE_ERROR,msg, null);
     }
 
-    public static ApiResp error(int code, String msg) {
+    public static <T> ApiResp<T> error(int code, String msg) {
         return create(code,msg, null);
     }
 
     /**
      * token 相关error
-     * @param code
      * @param msg
      * @return
      */
-    public static ApiResp errorToken(int code, String msg) {
-        return create(code, msg, null);
+    public static <T> ApiResp<T> errorToken(String msg) {
+        return create(CODE_ERROR_TOKEN, msg, null);
     }
 
-    public static ApiResp errorToken(int code, String msg, Object data) {
-        return create(code, msg, data);
+    public static <T> ApiResp<T> errorToken(String msg, T data) {
+        return create(CODE_ERROR_TOKEN, msg, data);
+    }
+
+    public static <T> ApiResp<T> expirationTokenError(String msg,T data) {
+        return create(CODE_ERROR_TOKEN_EXPIRED, msg, data);
     }
 
     public ApiResp(int code, String msg, T data) {

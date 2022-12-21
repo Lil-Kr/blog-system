@@ -27,23 +27,13 @@ public class UserApi implements UserServerApi {
     private UserService userService;
 
     @Override
-    public ApiResp userInfo(String loginAccount, String password) throws Exception {
-        User user = userService.findByLoginAccountAndPwd(loginAccount, password);
-        if (Objects.isNull(user)) {
-            return ApiResp.error("用户不存在");
-        }else {
-            return ApiResp.success(user);
-        }
+    public ApiResp<User> userInfo(String loginAccount, String password) throws Exception {
+        return userService.findByLoginAccountAndPwd(loginAccount, password);
     }
 
     @Override
-    public ApiResp userInfo(String loginAccount) throws Exception {
-        User user = userService.findByLoginAccount(loginAccount);
-        if (Objects.isNull(user)) {
-            return ApiResp.error("用户不存在");
-        }else {
-            return ApiResp.success(user);
-        }
+    public ApiResp<User> userInfo(String loginAccount) throws Exception {
+        return userService.findByLoginAccount(loginAccount);
     }
 
     @Override
