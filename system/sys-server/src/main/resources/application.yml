@@ -8,7 +8,7 @@ spring:
   application:
     name: sys-server-01
   profiles:
-    active: uat
+    active: dev
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     default-property-inclusion: non_null

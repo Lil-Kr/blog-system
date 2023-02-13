@@ -72,7 +72,23 @@ public class CustomUserServiceImpl implements UserDetailsService {
         authorities.add(authority);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-
         return new UserInfo(userInfo, authorities);
     }
+
+    public static void main(String[] args) {
+//        float i = 6.36f;
+//        System.out.println(1f / 2f);
+//        ArrayBlockingQueue arrayBlockingQueue = new ArrayBlockingQueue(10);
+
+        int n[] = {0,1,2,3,5};
+        int sum = 0;
+
+        for (int i=1; i<6;i++) {
+            sum = sum + n[i];
+        }
+        System.out.println(sum);
+
+
+    }
+
 }
