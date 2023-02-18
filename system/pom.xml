@@ -12,8 +12,8 @@
 
     <groupId>com.cy</groupId>
     <artifactId>system</artifactId>
-    <packaging>pom</packaging>
     <version>1.0.0</version>
+    <packaging>pom</packaging>
 
     <!-- 引入子模块名 -->
     <modules>
@@ -227,7 +227,7 @@
                 <version>${spring-cloud-starter-oauth2.version}</version>
             </dependency>
 
-            <!---->
+            <!-- security, oauth2 -->
             <dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-oauth2-resource-server</artifactId>
@@ -267,7 +267,6 @@
                 <artifactId>spring-boot-starter-data-redis</artifactId>
                 <version>${spring-boot.version}</version>
             </dependency>
-
             <!--spring boot end-->
 
             <!--mybatis plus-->
